@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layoutDirection="rtl"
+    android:textDirection="rtl"
+    android:layout_gravity="end"
+    android:gravity="end"
+    >
+
+
+    <item
+        android:id="@+id/contactUsFragment"
+        android:title="@string/contact_us"
+        android:icon="@drawable/ic_call_"/>
+
+
+
+    <item
+        android:id="@+id/customerServiceFragment"
+        android:title="@string/complains"
+        android:icon="@drawable/ic_customer_service"/>
+    <item
+        android:id="@+id/rightAndTermsFragment"
+        android:title="@string/rights_and_terms"
+        android:icon="@drawable/ic_terms"/>
+    <item
+        android:id="@+id/settingsFragment"
+        android:title="@string/settings"
+        android:icon="@drawable/ic_settings"/>
+</menu>
