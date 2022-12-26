@@ -29,8 +29,7 @@
                 android:id="@+id/lyt_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:orientation="vertical"
+                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/lyt_header">
@@ -48,57 +47,32 @@
                     />
 
 
+
+
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/et_account_id"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:background="@drawable/bg_rounded"
-                    android:hint="@string/account_id"
-                    android:paddingStart="@dimen/_12sdp"
 
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
+                    android:hint="@string/account_id"
+                    style="@style/editext"/>
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/et_account_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:background="@drawable/bg_rounded"
-                    android:hint="@string/account_name"
-                    android:paddingStart="@dimen/_12sdp"
 
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
+                    android:hint="@string/account_name"
+                    style="@style/editext"/>
 
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/et_bank"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:background="@drawable/bg_rounded"
-                    android:drawableEnd="@drawable/spinner_drop_dawn"
-                    android:enabled="false"
+
                     android:hint="@string/bank"
-                    android:paddingStart="@dimen/_15sdp"
-                    android:paddingEnd="@dimen/_3sdp"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
+                    style="@style/editext" />
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/et_city"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:background="@drawable/bg_rounded"
-                     android:enabled="false"
+                    android:id="@+id/et_ipan"
                     android:hint="رقم الايبان"
-                    android:paddingStart="@dimen/_15sdp"
-                    android:paddingEnd="@dimen/_3sdp"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
+                    android:drawableEnd="@drawable/spinner_drop_dawn"
+                    style="@style/editext"/>
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_register"
                     android:layout_width="match_parent"
@@ -116,7 +90,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:gravity="center"
+             android:layout_marginHorizontal="@dimen/_10sdp"       android:gravity="center"
                     android:orientation="horizontal">
 
                     <TextView

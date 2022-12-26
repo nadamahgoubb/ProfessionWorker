@@ -32,4 +32,8 @@
         android:id="@+id/settingsFragment"
         android:name="com.example.professionworker.ui.fragment.setting.SettingFragment"
         android:label="SettingFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.professionworker.ui.fragment.profile.ProfileFragment"
+        android:label="ProfileFragment" />
 </navigation>

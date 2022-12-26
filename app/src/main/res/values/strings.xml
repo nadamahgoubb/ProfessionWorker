@@ -3,7 +3,7 @@
     <string name="ok">Ok</string>
     <string name="error">Error</string>
     <string name="yes">Yes</string>
-    <string name="no">No</string>
+    <string name="no">لا</string>
     <string name="location_is_off">location_is_off</string>
     <string name="location_off_body_message">location_off_body_message</string>
     <string name="choose_branch_count">Please Select Number of Branches</string>
@@ -113,5 +113,9 @@
     <string name="done">قبول</string>
     <string name="complain_Title">عنوان الشكوى</string>
     <string name="write_your_complain">اكتب الشكوى الخاصه بك</string>
+    <string name="subscribe_plan">خطة الاشتراك المتاحه</string>
+    <string name="bank_information">البيانات البنكيه</string>
+    <string name="edit">تعديل</string>
+    <string name="delete">حذف</string>
 
 </resources>
