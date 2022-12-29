@@ -14,7 +14,7 @@ class FirstFragment( var state: Int) : BaseFragment<ItemWalkthrougthBinding>() {
             0 -> {
                 binding.tvTitle.text = resources.getString(R.string.services)
                 binding.tvMsg.text =
-                    getString(R.string.alot_of_workers_are_available)
+                    getString(R.string.offer_your_service)
                 binding.imgSlider.loadImage(R.drawable.walkthrought_0)
 
 
@@ -22,7 +22,7 @@ class FirstFragment( var state: Int) : BaseFragment<ItemWalkthrougthBinding>() {
             1 -> {
                 binding.tvTitle.text = getString(R.string.with_simple_steps)
                 binding.tvMsg.text =
-                    getString(R.string.you_can_have_aprovider)
+                    getString(R.string.offer_your_service_with_price)
                 binding.imgSlider.loadImage(R.drawable.walkthrougth_1)
 
 

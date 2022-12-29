@@ -70,7 +70,7 @@
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/et_ipan"
-                    android:hint="رقم الايبان"
+                    android:hint="@string/ipan_number"
                     android:drawableEnd="@drawable/spinner_drop_dawn"
                     style="@style/editext"/>
                 <com.google.android.material.button.MaterialButton

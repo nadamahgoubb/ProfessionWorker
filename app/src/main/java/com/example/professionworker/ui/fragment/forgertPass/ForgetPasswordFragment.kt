@@ -25,28 +25,58 @@ class ForgetPasswordFragment : BaseFragment<FragmentForgetPasswordBinding>() {
         binding.btnSendOtp.setOnClickListener {
             state3()
         }
+        binding.ivBack.setOnClickListener {
 
-    activity?.let {
-        requireActivity().onBackPressedDispatcher.addCallback(
-            it,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                   when(state){
-                       1-> activity?.onBackPressed()
-                          2-> state1()
-                       3->state2()
+            onBack()
+        }/*  when (state) {
+            1 -> {
+                state0()
+            }
 
-                   }
+            2 -> {
+                stateone()
+            }
+
+            else -> {
+                if (isEnabled) {
+                    isEnabled = false
+                    requireActivity().onBackPressed()
                 }
-            })
+            }
 
+        }*/
+        onBack()
 
     }
-    }
+
+    private fun onBack() {
+        activity?.let {
+            requireActivity().onBackPressedDispatcher.addCallback(
+                it,
+                object : OnBackPressedCallback(true) {
+                    override fun handleOnBackPressed() {
+                        when(state){
+                            1-> {
+
+                                if (isEnabled) {
+                                    isEnabled = false
+                                    requireActivity().onBackPressed()
+                                }
+                            }
+                            2-> state1()
+                            3->state2()
+
+                        }
+                    }
+                })
+
+
+        }    }
 
     private fun state2() {
     state= 2
       binding.lytFirst.isVisible=false
+        binding.lytChangePass.isVisible=false
         binding.lytOtp.isVisible = true
     }
 

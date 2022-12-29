@@ -49,10 +49,14 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                 binding.ivProfile.setVisibility(View.GONE);
                 binding.lytImg.setVisibility(View.GONE);
                 binding.cardSubscribation.root.setVisibility(View.GONE);
+                binding.lytName.setVisibility(View.GONE);
+
+
             } else if (verticalOffset == 0) {
                 binding.lytImg.setVisibility(View.VISIBLE);
                 binding.ivProfile.setVisibility(View.VISIBLE);
                 binding.cardSubscribation.root.setVisibility(View.VISIBLE);
+                binding.lytName.setVisibility(View.VISIBLE);
             } else {
                 // Somewhere in between
                 // Do according to your requirement

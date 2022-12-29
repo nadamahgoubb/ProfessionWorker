@@ -12,22 +12,36 @@ import com.example.professionworker.base.BaseFragment
 import com.example.professionworker.databinding.FragmentSplashBinding
 import com.example.professionworker.databinding.FragmentSubscribationBinding
 import com.example.professionworker.ui.activity.MainActivity
+import com.example.professionworker.ui.adapter.SupscribeationPlansAdapter
 import com.example.professionworker.ui.bottomShet.OnClickSubscribationBottomSheetFragment
 import com.example.professionworker.ui.bottomShet.OnClickSucessBottomSheetFragment
 import com.example.professionworker.ui.bottomShet.SubscribationBottomSheetFragment
 import com.example.professionworker.ui.bottomShet.SubscribationSucessBottomSheetFragment
+import com.example.professionworker.ui.listener.SubscribationPlansOnClickListener
 import com.example.professionworker.util.Constants
+import com.example.professionworker.util.ext.init
 
-class SubscribationFragment : BaseFragment<FragmentSubscribationBinding>() {
-
+class SubscribationFragment : BaseFragment<FragmentSubscribationBinding>(),
+    SubscribationPlansOnClickListener {
+lateinit var adapter:SupscribeationPlansAdapter
 
     override fun onFragmentReady() {
+        initAdapters()
+        onClick()
+
+    }
+
+    private fun onClick() {
         binding.btnSubscribe.setOnClickListener {
             showSubscribationsBotttomSheetFragment()
 
         }
     }
 
+    private fun initAdapters() {
+        adapter = SupscribeationPlansAdapter(this, requireContext())
+        binding.rvSubscribationPlans.init(requireContext(), adapter , 3)
+    }
     fun openMain() {
         startActivity(Intent(activity, MainActivity::class.java))
         activity?.finish()
@@ -60,4 +74,7 @@ class SubscribationFragment : BaseFragment<FragmentSubscribationBinding>() {
 
         }).show(childFragmentManager, SubscribationSucessBottomSheetFragment::class.java.canonicalName)
     }
+
+    override fun onPlanClickListener() {
+showToast("vv")    }
 }

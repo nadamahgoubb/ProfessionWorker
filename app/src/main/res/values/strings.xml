@@ -47,8 +47,8 @@
     <string name="experience">الخبرات السابقه</string>
     <string name="experience_years">عدد سنين الخبرة</string>
     <string name="et_payment_per_hour">قيمة الاجر بالساعة</string>
-    <string name="id_image">صوره اثبات الشخصيه</string>
-    <string name="id_image2">صورة الهوىة الشخصية</string>
+    <string name="id_image">صوره اثبات الشخصية</string>
+    <string name="id_image2">صورة الهوية الشخصية</string>
     <string name="by_signing_in_you_agreed_to_terms"><![CDATA[<font color=#FF000000> بالقيام بالتسجيل لدينا فأنت تقم بالموافقه على  </font>
      <font color=#dd9c40>    الشروط والاحكام</font>
      <font color=#FF000000>    الخاصه بنا </font>
@@ -117,5 +117,10 @@
     <string name="bank_information">البيانات البنكيه</string>
     <string name="edit">تعديل</string>
     <string name="delete">حذف</string>
+    <string name="free">اشتراك مجانى</string>
+    <string name="free_desc">اشترك لمده اسبوع مجانا \n  ثم التجديد</string>
+    <string name="offer_your_service">اختر خدماتك الان بسهوله مع مهن \n وقدم خدمتك  </string>
+    <string name="offer_your_service_with_price">قدم خدماتك بسعرك الخاص \n واستقبل طلباتك بكل سهوله </string>
+    <string name="ipan_number">رقم الايبان</string>
 
 </resources>
