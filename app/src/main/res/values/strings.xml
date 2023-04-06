@@ -18,7 +18,7 @@
     <string name="don_t_have_account"> ليس لديك حساب؟</string>
     <string name="_have_account"> لديك حساب؟</string>
     <string name="signin">تسجيل الدخول</string>
-    <string name="register_new_request">تسجيل مزود خدمة جديد </string>
+    <string name="register_new_request">تسجيل مقدم خدمة جديد </string>
     <string name="user_name">اسم المستخدم</string>
     <string name="email">البريد الالكترونى</string>
     <string name="phone_number">رقم الجوال</string>
@@ -31,8 +31,8 @@
     <string name="signin_now">الدخول الان</string>
     <string name="forget_password">نسيت كلمة المرور؟</string>
     <string name="sign">دخول</string>
-    <string name="register_new_account">مزود جديد</string>
-    <string name="register_new_account_"> تسجيل مزود جديد</string>
+    <string name="register_new_account">مقدم جديد</string>
+    <string name="register_new_account_"> تسجيل مقدم جديد</string>
     <string name="enter_your_email">قم يادخال بريد الكترونى الخاص بك</string>
     <string name="change_password">تغيير كلمة المرور</string>
     <string name="if_you_cant_have_acode">اذا لم يمكنك الحصول على الرمز</string>
@@ -74,7 +74,7 @@
     <string name="reject">رفض</string>
     <string name="accept">قبول</string>
     <string name="order_has_been_done">تم تقديم الخدمة</string>
-    <string name="provider_review">تقييمات مزود الخدمة</string>
+    <string name="provider_review">تقييمات مقدم الخدمة</string>
     <string name="change_pass">تغيير كلمه المرور</string>
     <string name="enter_pin_code">ادخل رمز التاكيد</string>
     <string name="pincode_has_been_ent_to_your_phone">لقد تم ارسال رمز التعريف الى هاتفك</string>
@@ -94,7 +94,7 @@
     <string name="waiting_approval">طلب قيد التنفيذ</string>
     <string name="new_order">طلب جديد</string>
     <string name="orders_details">تفاصيل الطلب</string>
-    <string name="on_hold_msg">تم ارسال طلبك بنجاح الى مزود الخدمة .سيتم مراجعه طلبك قبل الموافقه عليه ثم سيتواصل معك مزود خدمه لاعلام سيادتكم باى تفاصيل اخري</string>
+    <string name="on_hold_msg">تم ارسال طلبك بنجاح الى مقدم الخدمة .سيتم مراجعه طلبك قبل الموافقه عليه ثم سيتواصل معك مقدم خدمه لاعلام سيادتكم باى تفاصيل اخري</string>
     <string name="order_id">رقم الطلب</string>
     <string name="payment_meyhod">طرق الدفع</string>
     <string name="cash">نقدى</string>
@@ -122,5 +122,118 @@
     <string name="offer_your_service">اختر خدماتك الان بسهوله مع مهن \n وقدم خدمتك  </string>
     <string name="offer_your_service_with_price">قدم خدماتك بسعرك الخاص \n واستقبل طلباتك بكل سهوله </string>
     <string name="ipan_number">رقم الايبان</string>
+    <string name="account_type">نوع الحساب</string>
+    <string name="individual">فرد</string>
+    <string name="comp">شركة</string>
 
-</resources>
+
+
+        <string name="choose_service_type">اختر نوع الخدمة</string>
+        <string name="continuee" translatable="false">متابعة</string>
+        <string name="graunte_customer_service">ضمان الخدمة للعملاء</string>
+        <string name="pull_up">اسحب لاعلي</string>
+        <string name="thanks_for_order">شكرا لطلب خدمتك</string>
+        <string name="continuee_shopping">متابعه الخدمات</string>
+        <string name="provider">مقدمى الخدمات</string>
+        <string name="providers">مقدمى الخدمات </string>
+        <string name="order_servie">طلب الخدمة</string>
+        <string name="are_you_sure_want_to_delete_this_account">هل انت متاكد انك تريد حذف الحساب الخاص بك</string>
+        <string name="sorry_youcant_order_login_first">عفوا لا يمكنك طلب الخدمه يجب عليك تسجيل الدخول اولا</string>
+        <string name="no_thanks">لا شكرا</string>
+        <string name="write_your_comment">اكتب تعليقك هنا</string>
+        <string name="add_comment">اضافه التقييم</string>
+        <string name="orders_summry">ملخص الطلب</string>
+        <string name="expected_time">وقت الوصول المتوقع</string>
+        <string name="comment">تعليقات اضافيه</string>
+        <string name="order">تنفيذ الطلب</string>
+        <string name="new_">الجديدة</string>
+        <string name="prev">السابقة</string>
+        <string name="current">الحالية</string>
+        <string name="current_orders">طلب حالى </string>
+
+        <string name="empty_address">Please Enter Your Address</string>
+
+        <string name="complain">الابلاغ عن مقدم الخدمه</string>
+
+        <string name="logout">تسجيل الخروج</string>
+        <string name="please_enter_your_phone">برجاء إدخال رقم الهاتف</string>
+        <string name="no_internet">لا يوجد إتصال بالانترنت</string>
+        <string name="empty_user_name">برجاء إدخال اسم المستخدم</string>
+        <string name="empty_num">برجاء إدخال رقم الجوال</string>
+        <string name="msg_empty_email">برجاء إدخال البريد الإلكترونى</string>
+        <string name="msg_invalide_email">البريد الإلكترونى غير صالح</string>
+        <string name="empty_num_code">برجاء إدخال كود البلد</string>
+        <string name="empty_country_id">برجاء اختيار البلد</string>
+        <string name="empty_cityid">برجاء اختيار المدينة</string>
+        <string name="enter_your_location">برجاء إدخال الموقع</string>
+        <string name="choose_country_first">برجاء اختيار البلد اولا</string>
+        <string name="msg_empty_password">يرجى إدخال كلمه المرور</string>
+        <string name="msg_empty_new_password">يرجى إدخال رقم المرور الجديد</string>
+        <string name="msg_empty_confirm_password">يرجى تأكيد رقم المرور الجديد</string>
+        <string name="msg_empty_confirm_new_password">يرجى أعاده إدخال رقم المرور</string>
+        <string name="password_not_matching">كلمه المرور غير متطابقه</string>
+        <string name="empty_service_id">برجاء إدخال الخدمة المقدمة </string>
+        <string name="emptypervious_exper">برحاء إدخال الخبرات السابقة </string>
+        <string name="empty_personal_id_photo">برجاء رفع صورة اثبات الشخصية </string>
+        <string name="empty_photo">برجاء رفع الصورة الشخصية </string>
+        <string name="empty_hour_price">برجاء إدخال قيمة الأجرة بالساعة </string>
+        <string name="empty_years_of_experience">برجاء إدخال عدد سنين الخبرة </string>
+        <string name="empty_national_id">برجاء إدخال رقم السجل التجارى  </string>
+        <string name="empty_nationality_id">برجاء إدخال الجنسية </string>
+        <string name="empty_sub_service">برجاء إدخال تفاصيل الخدمة  </string>
+
+    <string name="filter">فلتر</string>
+        <string name="price">السعر</string>
+        <string name="reviews">التقييمات</string>
+        <string name="distance">المسافه</string>
+         <string name="deletefilter">مسح</string>
+        <string name="high_to_law">من الاعلى للاقل</string>
+        <string name="law_to_high">من الاقل للاعلي</string>
+        <string name="hours_count">عدد الساعات</string>
+        <string name="hours_cost">تكلفة الساعة </string>
+        <string name="add_money">اضافه رصيد</string>
+        <string name="balance">الرصيد :</string>
+        <string name="add_balance">اضافه رصيد</string>
+        <string name="amount">المبلغ</string>
+        <string name="add">اضافه</string>
+        <string name="please_enter_your_title">برجاء ادخال العنوان</string>
+        <string name="msg_empty_content">"برجاء ادخال مختوى الشكوى "</string>
+        <string name="orderid">طلب رقم</string>
+        <string name="whatsup_not_installed">تطبيق الواتساب غير مثبت على الهاتف</string>
+        <string name="please_choose_your_locaion">برجاء اختيار العنوان اولا</string>
+        <string name="distance_between">المسافه بينكم</string>
+        <string name="ecperience">سنين الخبرة</string>
+        <string name="selected_provider">مقدمى الخدمة المختارين</string>
+        <string name="please_choose_providers_first">برجاء اختيار مزود خدمة اولا</string>
+        <string name="visit_start_time">بداية وقت الزبارة</string>
+        <string name="am">ص</string>
+        <string name="pm">م</string>
+        <string name="choose_time_to_visit">اختر وقت الزيارة المفضل</string>
+        <string name="please_choose_time_to_Visit">برجاء اختيار وقت الزياره اولا</string>
+        <string name="service_cost">اجمالى التكلفه المبدئية</string>
+        <string name="service_tax">ضريبة القيمة المضافة</string>
+        <string name="empty_rate">برجاء إدخال التقييم</string>
+        <string name="empty_comment">برجاء إدخال التعليق</string>
+        <string name="goto_selected_provider">الذهاب لمقدمى الخدمه</string>
+        <string name="no_providers">عفوا لا يتوفر مقدمى خدمه الان</string>
+        <string name="goto_main_screen">الذهاب للرئيسية</string>
+        <string name="please_select_subServie">برجاء اختيار نوع الخدمة</string>
+        <string name="no_service">لا توجد خدمات حتى الان</string>
+        <string name="hour">س</string>
+        <string name="visa">فيزا</string>
+        <string name="wallet">المحفظة</string>
+        <string name="pay"> دفع الان  </string>
+        <string name="choose_payment_method">برجاء إختيار طريقة الدفع اولا </string>
+        <string name="your_order_id">رقم الطلب الخاص بك</string>
+        <string name="sure_to_delete_account">هل انت متاكد انك تريد حذف \n الحساب الخاص بك</string>
+        <string name="arabic">اللغه العربية</string>
+        <string name="nationality">الجنسية</string>
+        <string name="hello">مرحبا</string>
+        <string name="What_do_you_want_from_todays_services">ماذا تريد من خدمات اليوم</string>
+        <string name="send_otp">ادخال رمز التاكيد</string>
+        <string name="view_order_details">عرض تفاصيل الطلب</string>
+        <string name="succssful_order">طلب ناجح</string>
+        <string name="confirm_location">تاكيد الموقع</string>
+        <string name="no_orders">لم تقم بأى طلبات حتى الان</string>
+        <string name="sr">ر.س</string>
+    </resources>

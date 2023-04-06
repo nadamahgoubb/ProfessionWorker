@@ -23,13 +23,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
-import com.bumptech.glide.Glide.with
- import com.github.dhaval2404.imagepicker.ImagePicker
+import com.github.dhaval2404.imagepicker.ImagePicker
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
-import java.io.*import okhttp3.MediaType.Companion.toMediaTypeOrNull
- import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.*
 
 private const val TAG = "FileManager"
@@ -187,6 +184,20 @@ object FileManager {
             ).createIntent { intent ->
                 launcher.launch(intent)
             }
+    }
+
+    fun File.toMultiPart(serverKey: String): MultipartBody.Part {
+        val reqFile = asRequestBody("image/*".toMediaTypeOrNull())
+        return MultipartBody.Part.createFormData(
+            serverKey,
+            name, // filename, this is optional
+            reqFile
+        )
+       /* val imagePart = MultipartBody.Part.createFormData(
+            "image",
+            menuItemBody.image!!.name,
+            menuItemBody.image.asRequestBody("multipart/form-data".toMediaTypeOrNull())
+        )*/
     }
 
 

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import com.example.professionworker.R
 import com.example.professionworker.base.BaseFragment
 import com.example.professionworker.databinding.FragmentSplashBinding
@@ -17,13 +18,18 @@ import com.example.professionworker.ui.bottomShet.OnClickSubscribationBottomShee
 import com.example.professionworker.ui.bottomShet.OnClickSucessBottomSheetFragment
 import com.example.professionworker.ui.bottomShet.SubscribationBottomSheetFragment
 import com.example.professionworker.ui.bottomShet.SubscribationSucessBottomSheetFragment
+import com.example.professionworker.ui.fragment.login.AuthViewModel
 import com.example.professionworker.ui.listener.SubscribationPlansOnClickListener
 import com.example.professionworker.util.Constants
 import com.example.professionworker.util.ext.init
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
 
 class SubscribationFragment : BaseFragment<FragmentSubscribationBinding>(),
     SubscribationPlansOnClickListener {
 lateinit var adapter:SupscribeationPlansAdapter
+    private val mViewModel: AuthViewModel by activityViewModels()
 
     override fun onFragmentReady() {
         initAdapters()

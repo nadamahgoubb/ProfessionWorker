@@ -1,19 +1,19 @@
 package com.example.professionworker.ui.fragment.register
 
-import android.content.Intent
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.professionworker.R
 import com.example.professionworker.base.BaseFragment
 import com.example.professionworker.databinding.FragmentRegisterBankAccountBinding
-import com.example.professionworker.databinding.FragmentRegisterBinding
-import com.example.professionworker.ui.activity.MainActivity
+import com.example.professionworker.ui.fragment.login.AuthViewModel
+
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
 
 class RegisterBankAccountFragment : BaseFragment<FragmentRegisterBankAccountBinding>() {
+    private val mViewModel: AuthViewModel by activityViewModels()
     override fun onFragmentReady() {
 binding.btnRegister.setOnClickListener {
   findNavController().navigate(R.id.subscribationFragment)

@@ -11,12 +11,12 @@ object Constants {
     const val inprogress="inprogress"
 
     const val TOKEN = "token"
-    const val NAME = "name"
-    const val LANG = "lang"
-    const  val STATUS: String="status"
-    const  val PHONE: String="phone"
-    const val ONLINE: String ="online"
-    const val OFFLINE: String ="offline"
+     const val LANG = "lang"
+    const val LOGGED_IN = "LOGGED_IN"
+    const  val USER: String="user"
+    //send type in registeration
+    const  val PERSON: String="person"
+    const  val COMPANY: String="company"
 
     const val DATA_STORE_NAME = "my_datastore"
     const val ROOM_DATA_BASE_NAME = "my_datastore"
@@ -29,11 +29,6 @@ object Constants {
     const val YES = "Yes"
     const val NO = "no"
 
-    const val PICK_UP="pick_up_laundy"
-    const val DROP_OFF="drop_of_home"
-
-    const val PICK_UP_TITLE="Pick Up"
-    const val DROP_OFF_TITLE="Drop Off"
 
 
 }
