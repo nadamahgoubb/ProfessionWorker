@@ -1,17 +1,21 @@
 package com.example.professionworker.ui.fragment.login
 
- import android.app.Application
+import android.app.Application
 import androidx.lifecycle.viewModelScope
+import com.example.profession.data.dataSource.response.*
 import com.example.professionworker.R
 import com.example.professionworker.base.BaseViewModel
-import com.example.professionworker.data.params.ForgetPasswordParms
-import com.example.professionworker.data.params.LoginParms
-import com.example.professionworker.data.params.RegisterParams
+import com.example.professionworker.base.PagingParams
+import com.example.professionworker.data.params.*
 import com.example.professionworker.data.repo.PrefsHelper
-import com.example.professionworker.data.response.UserDataResponse
- import com.example.professionworker.util.NetworkConnectivity
+import com.example.professionworker.domain.response.UserDataResponse
+import com.example.professionworker.util.NetworkConnectivity
 import com.example.professionworker.util.Resource
 import com.example.professionworker.domain.AuthUseCase
+import com.example.professionworker.domain.ProfileUseCase
+import com.example.professionworker.domain.ProfileUseCase.ProfileActions.DELETE_ACCOUNT
+import com.example.professionworker.domain.ServicesPagingUseCase
+import com.example.professionworker.domain.SubServicesPagingUseCase
 import com.example.professionworker.util.Extension
 import com.example.professionworker.util.ext.isNull
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,38 +26,65 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AuthViewModel
-@Inject constructor(app: Application, val authUserCase: AuthUseCase) : BaseViewModel<AuthAction>(app) {
-    var name: String? = null
-    var email: String? = null
-    var country_code: String? = null
-    var phone: String? = null
-    var password: String? = null
-    var lat: Double? = null
-    var lon: Double? = null
+@Inject constructor(
+    app: Application,
+    val authUserCase: AuthUseCase,
+    val useCaseProfile: ProfileUseCase,
+    var usecaseService: ServicesPagingUseCase,
+    var usecaseSubService: SubServicesPagingUseCase
+) : BaseViewModel<AuthAction>(app) {
+    var name: String = ""
+    var email: String=""
+    var country_code: String=""
+    var phone: String=""
+    var password: String = ""
+    var lat: String = " "
+    var lon: String = " "
 
-    var type: String? = null
-    var national_id: String? = null
-    var countryId: String? = null
-    var cityId: String? = null
-    var nationality_id: String? = null
-    var address: String? = null
+    var type: String=""
+    var national_id: String=""
+    var countryId: String=""
+    var cityId: String=""
+    var nationality_id: String=""
+    var address: String=""
 
-    var countryCode: String? = null
-    var service_id: String? = null
-    var previous_experience: String? = null
-    var years_experience: String? = null
-    var hour_price: String? = null
-    var paaword: String? = null
-    var photo: File? = null
+     var service_id: String=""
+    var previous_experience: String=""
+    var years_experience: String=""
+    var hour_price: String=""
+     var photo: File? = null
     var personal_id_photo: File? = null
-    var account_number: String? = null
-    var account_name: String? = null
-    var bank_id: String? = null
-    var iban_number: String? = null
-    var mobile_id: String? = null
-    var sub_service_id: ArrayList<String>? = null
+    var account_number: String=""
+    var account_name: String=""
+    var bank_id: String=""
+    var iban_number: String=""
+     var sub_service_id: ArrayList<Int> = arrayListOf()
 
+    fun validateBankRegisteration(
+        account_number: String, account_name: String, bank_id: String, iban_number: String
+    ): Boolean {
+        return if (account_number.isNullOrBlank()) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.empty_account_number)))
+            false
+        } else if (account_name.isNullOrBlank()) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.empty_account_name)))
+            false
+        } else if (bank_id.isNullOrBlank()) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.empty_bank_id)))
+            false
+        } else if (iban_number.isNullOrBlank()) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.empty_iban_number)))
+            false
+        } else {
 
+            this.account_name = account_name
+            this.bank_id = bank_id
+            this.iban_number = iban_number
+            this.account_number = account_number
+            register()
+            true
+        }
+    }
 
     fun validateRegisteration(
         name: String,
@@ -64,11 +95,11 @@ class AuthViewModel
         lat: Double?,
         lon: Double?,
         address: String?,
-        sub_service_id: ArrayList<String> = arrayListOf(),
+        sub_service_id: ArrayList<Int> = arrayListOf(),
         countryCode: String?,
         email: String,
         phone: String,
-         service_id: String?,
+        service_id: String?,
         previous_experience: String?,
         years_experience: String?,
         hour_price: String?,
@@ -76,14 +107,13 @@ class AuthViewModel
         personal_id_photo: File?, pass: String,
 
         ): Boolean {
-        return if (name.isNullOrBlank()) {
+     return if (name.isNullOrBlank()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.empty_user_name)))
             false
         } else if (national_id.isNullOrBlank()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.empty_national_id)))
             false
-        }
-        else if (countryId.isNullOrBlank()) {
+        } else if (countryId.isNullOrBlank()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.empty_country_id)))
             false
         } else if (cityId.isNullOrBlank()) {
@@ -92,15 +122,13 @@ class AuthViewModel
         } else if (nationality_id.isNullOrBlank()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.empty_nationality_id)))
             false
-        }
-        else if (lat.isNull() || lon?.equals(0) == true || address.isNullOrEmpty()) {
+        } else if (lat.isNull() || lon?.equals(0) == true || address.isNullOrEmpty()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.enter_your_location)))
             false
-        }    else if  (sub_service_id.isNullOrEmpty()) {
+        } else if (sub_service_id.isNullOrEmpty()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.empty_sub_service)))
             false
-        }
-        else if (phone.isNullOrBlank()) {
+        } else if (phone.isNullOrBlank()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.empty_num)))
             false
         } else if (email.isNullOrBlank()) {
@@ -121,49 +149,75 @@ class AuthViewModel
         } else if (previous_experience.isNullOrBlank()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.emptypervious_exper)))
             false
+        } else if (hour_price.isNullOrBlank()) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.empty_hour_price)))
+            false
         } else if (personal_id_photo.isNull()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.empty_personal_id_photo)))
             false
         } else if (photo.isNull()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.empty_photo)))
             false
-        } else if (hour_price.isNull()) {
-            produce(AuthAction.ShowFailureMsg(getString(R.string.empty_hour_price)))
-            false
         } else if (pass.isNullOrBlank()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.msg_empty_password)))
             false
-        }  else {
+        } else {
 
-        /*    this.name = name
+            this.name = name
             this.phone = phone
+            this.type = type
             this.email = email
-            this.country_code = country_code
+            this.country_code = countryCode
             this.countryId = countryId
             this.cityId = cityId
+            this.national_id = national_id
+            this.nationality_id = nationality_id
             this.password = pass
-            this.lon = lon
-            this.lat = lat
-            register(
+            this.lon = lon.toString()
+            this.lat = lat.toString()
+            this.address = address
+            this.sub_service_id = sub_service_id
+            this.service_id = service_id
+            this.previous_experience = previous_experience
+            this.years_experience = years_experience
+            this.hour_price = hour_price
+            this.photo = photo
+            this.personal_id_photo = personal_id_photo
+
+         /*   register(
                 RegisterParams(
                     name,
-                    phone,
-                    email,
-                    country_code,
+                    type,
+                    national_id,
                     countryId,
                     cityId,
-                    pass,
+                    nationality_id,
+                    address,
                     lat.toString(),
                     lon.toString(),
-                    "0",
-                    address
-                )
-            )*/
-            true
+                    phone,
+                    email,
+                    countryCode,
+                    service_id,
+                    previous_experience,
+                    years_experience,
+                    hour_price,
+                    pass,
+                    photo,
+                    personal_id_photo,
+                    account_number,
+                    account_name,
+                    bank_id,
+                    iban_number,
+                    mobile_id,
+                    sub_service_id,
+                )*/
+            produce(AuthAction.RegisterationValidationSucess(true))
 
-        }
+                true
+
+      }
     }
-
 
 
     fun isValidParams(phone: String?, pass: String?): Boolean {
@@ -210,17 +264,40 @@ class AuthViewModel
 
 
     fun register(
-        params: RegisterParams
-    ) {
+     ) {
         if (app?.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
             produce(AuthAction.ShowLoading(true))
 
             viewModelScope.launch {
                 var res = authUserCase.invoke(
-                    viewModelScope, params
-                )
+                    viewModelScope, RegisterParams(
+                            name,type,
+                            national_id,
+                            countryId,
+                            cityId,
+                            nationality_id,
+                            address,
+                            lat,
+                            lon,
+                            phone,
+                            email,
+                            country_code,
+                            service_id,
+                            previous_experience,
+                            years_experience,
+                            hour_price,
+                        password,
+                        photo!!,
+                        personal_id_photo!!,
+                            account_number.trim(),
+                            account_name,
+                            bank_id,
+                            iban_number.trim(),
+                            "0",
+                            sub_service_id,
 
-                { res ->
+                    )
+                )     { res ->
                     when (res) {
                         is Resource.Failure -> produce(AuthAction.ShowFailureMsg(res.message.toString()))
                         is Resource.Progress -> produce(AuthAction.ShowLoading(res.loading))
@@ -261,55 +338,376 @@ class AuthViewModel
             produce(AuthAction.ShowFailureMsg(getString(R.string.no_internet)))
         }
     }
-    /*  fun getAllCitiesByCountryId(country_id: String) {
-  
-  
-          if (app?.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
-  
-  
-              produce(AuthAction.ShowLoading(true))
-              authUserCase.invoke(
-                  viewModelScope, CityParams(country_id)
-              ) { res ->
-                  when (res) {
-                      is Resource.Failure -> produce(AuthAction.ShowFailureMsg(res.message.toString()))
-                      is Resource.Progress -> produce(AuthAction.ShowLoading(res.loading))
-                      is Resource.Success -> {
-                          produce(AuthAction.ShowAllCities(res.data.data as CitesResponse))
-  
-                      }
-                  }
-              }
-          } else {
-              produce(AuthAction.ShowFailureMsg(getString(R.string.no_internet)))
-          }
-      }
-  
-      fun getAllCountry() {
-          if (app?.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
-  
-  
-              produce(AuthAction.ShowLoading(true))
-              authUserCase.invoke(
-                  viewModelScope
-              ) { res ->
-                  when (res) {
-                      is Resource.Failure -> produce(AuthAction.ShowFailureMsg(res.message.toString()))
-                      is Resource.Progress -> produce(AuthAction.ShowLoading(res.loading))
-                      is Resource.Success -> {
-                          produce(AuthAction.ShowAllCountry(res.data.data as CountriesResponse))
-  
-                      }
-                  }
-              }
-          } else {
-              produce(AuthAction.ShowFailureMsg(getString(R.string.no_internet)))
-          }
-      }
-  */
+
+    fun getAllCitiesByCountryId(country_id: String, type: Int) {
+
+
+        if (app?.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
+
+
+            produce(AuthAction.ShowLoading(true))
+            authUserCase.invoke(
+                viewModelScope, CityParams(country_id)
+            ) { res ->
+                when (res) {
+                    is Resource.Failure -> produce(AuthAction.ShowFailureMsg(res.message.toString()))
+                    is Resource.Progress -> produce(AuthAction.ShowLoading(res.loading))
+                    is Resource.Success -> {
+                        produce(AuthAction.ShowAllCities(res.data.data as CitesResponse, type))
+
+                    }
+                }
+            }
+        } else {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.no_internet)))
+        }
+    }
+
+    fun getAllCountry(type: Int) {
+        if (app?.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
+
+
+            produce(AuthAction.ShowLoading(true))
+            authUserCase.invoke(
+                viewModelScope
+            ) { res ->
+                when (res) {
+                    is Resource.Failure -> produce(AuthAction.ShowFailureMsg(res.message.toString()))
+                    is Resource.Progress -> produce(AuthAction.ShowLoading(res.loading))
+                    is Resource.Success -> {
+                        produce(AuthAction.ShowAllCountry(res.data.data as CountriesResponse, type))
+
+                    }
+                }
+            }
+        } else {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.no_internet)))
+        }
+    }
+
+    fun getProfile() {
+        if (app?.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
+
+
+            produce(AuthAction.ShowLoading(true))
+            useCaseProfile.invoke(
+                viewModelScope
+            ) { res ->
+                when (res) {
+                    is Resource.Failure -> produce(AuthAction.ShowFailureMsg(res.message.toString()))
+                    is Resource.Progress -> produce(AuthAction.ShowLoading(res.loading))
+                    is Resource.Success -> {
+                        produce(AuthAction.ShowProfile(res.data.data as ProfileResponse))
+
+                    }
+                }
+            }
+        } else {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.no_internet)))
+        }
+    }
+     fun getSubService(serviceId: String) {
+
+        if (app?.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
+            usecaseSubService.invoke(
+                viewModelScope, SubServicesParams(serviceId)
+            ) { data ->
+                viewModelScope.launch {
+                    produce(AuthAction.ShowSubService(data))
+                }
+            }
+        } else {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.no_internet)))
+        }
+    }
+
+    fun getAllServices() {
+
+        if (app?.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
+            usecaseService.invoke(
+                viewModelScope, PagingParams()
+            ) { data ->
+                viewModelScope.launch {
+                    produce(AuthAction.ShowService(data))
+                }
+            }
+        } else {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.no_internet)))
+        }
+    }
+
+    fun deleteAccount() {
+
+        produce(AuthAction.ShowLoading(true))
+
+        viewModelScope.launch {
+            var res = useCaseProfile.invoke(viewModelScope, DELETE_ACCOUNT) { res ->
+                when (res) {
+                    is Resource.Failure -> produce(AuthAction.ShowFailureMsg(res.message))
+                    is Resource.Progress -> produce(AuthAction.ShowLoading(res.loading))
+                    is Resource.Success -> {
+                        produce(
+                            AuthAction.DeleteAccount(res.data.message)
+                        )
+
+                    }
+                }
+
+            }
+
+        }
+    }
+
+    /*    val name: String,
+        val nationalcard_id: String,
+        val countryId: String="",
+        val cityId: String="",
+        val nationality_id: String="",
+        val address: String="",
+        val lat: String,
+        val lon: String,
+        val email: String,
+        val phone: String,
+        val country_code: String,
+        var service_id: String,
+        var previous_experience: String,
+        var years_experience: String,
+         var photo: File,
+        var account_number: String,
+        var account_name: String,
+        var bank_id: String,
+        var iban_number: String,
+        var mobile_id: String = "0",
+        var sub_service_id: ArrayList<String>*/
+    fun validateUpdateProfile(
+        name: String,
+        nationalcard_id: String?,
+        countryId: String?,
+        cityId: String?,
+        nationality_id: String?,
+        address: String? ,
+        lat: String?,
+        lon: String?,
+        email: String,
+        phone: String,
+        country_code: String,
+        service_id: String,
+        previous_experience: String,
+        years_experience: String,
+        hour_price: String,
+        photo: File?,
+        account_number: String,
+        account_name: String,
+        bank_id: String,
+        iban_number: String,
+         sub_service_id: ArrayList<Int>
+
+    ): Boolean {
+        return if (name.isNullOrBlank()) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.empty_user_name)))
+            false
+        } else if (nationalcard_id.isNullOrBlank()) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.empty_nationalcard_id)))
+            false
+        } else if (phone.isNullOrBlank()) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.empty_num)))
+            false
+        } else if (email.isNullOrBlank()) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.msg_empty_email)))
+            false
+        } else if (!Extension.isEmailValid(email)) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.msg_invalide_email)))
+            false
+        } else if (country_code.isNullOrBlank()) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.empty_num_code)))
+            false
+        } else if (countryId.isNullOrBlank()) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.empty_country_id)))
+            false
+        } else if (cityId.isNullOrBlank()) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.empty_cityid)))
+            false
+        } else if (service_id.isNullOrBlank()) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.empty_service_id)))
+            false
+        } else if (nationality_id.isNullOrBlank()) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.empty_nationality_id)))
+            false
+        } else if (lat.isNull() || lon?.equals(0) == true || address.isNullOrEmpty()) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.enter_your_location)))
+            false
+        }
+     else if (years_experience.isNullOrBlank())
+    {
+        produce(AuthAction.ShowFailureMsg(getString(R.string.empty_years_of_experience)))
+        false
+    } else if (previous_experience.isNullOrBlank())
+    {
+        produce(AuthAction.ShowFailureMsg(getString(R.string.emptypervious_exper)))
+        false
+    } else if (hour_price.isNullOrBlank())
+    {
+        produce(AuthAction.ShowFailureMsg(getString(R.string.empty_hour_price)))
+        false
+    }
+       else if (account_number.isNullOrBlank()) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.empty_account_number)))
+            false
+        } else if (account_name.isNullOrBlank()) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.empty_account_name)))
+            false
+        } else if (bank_id.isNullOrBlank()) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.empty_bank_id)))
+            false
+        } else if (iban_number.isNullOrBlank()) {
+            produce(AuthAction.ShowFailureMsg(getString(R.string.empty_iban_number)))
+            false
+        }
+
+        else
+    {
+
+         updateProfile(
+            EditProfileParams(
+                name ,
+                nationalcard_id ,null,
+                countryId ,
+             cityId ,
+        nationality_id ,
+        address ,
+                lat.toString(),
+                lon.toString(),
+        email ,
+        phone ,
+        country_code ,
+        service_id ,
+        previous_experience ,
+        years_experience ,
+        hour_price ,
+        photo ,
+        account_number  ,
+        account_name   ,
+        bank_id  ,
+        iban_number ,
+       "0",
+        sub_service_id    )
+        )
+        true
+
+    }
 }
 
- 
+fun updateProfile(param: EditProfileParams) {
+    viewModelScope.launch {
+        var res = useCaseProfile.invoke(viewModelScope, param) { res ->
+            when (res) {
+                is Resource.Failure -> produce(AuthAction.ShowFailureMsg(res.message))
+                is Resource.Progress -> produce(AuthAction.ShowLoading(res.loading))
+                is Resource.Success -> {
+                    produce(AuthAction.ShowUserUpdated(res.data.message as String))
+                    PrefsHelper.saveUserData(res.data.data as UserDataResponse)
+
+                }
+            }
+        }
+    }
+}
+
+
+fun isValidParamsChangePass(pass: String, newpass: String, confirmpass: String) {
+    if (pass.isNullOrBlank()) {
+        produce(AuthAction.ShowFailureMsg(getString(R.string.msg_empty_password)))
+        false
+    } else if (newpass.isNullOrBlank()) {
+        produce(AuthAction.ShowFailureMsg(getString(R.string.msg_empty_new_password)))
+        false
+
+    } else if (confirmpass.isNullOrBlank()) {
+        produce(AuthAction.ShowFailureMsg(getString(R.string.msg_empty_confirm_new_password)))
+        false
+
+    } else if (!confirmpass.equals(newpass)) {
+        produce(AuthAction.ShowFailureMsg(getString(R.string.password_not_matching)))
+        false
+
+    } else changePass(ChangePasswordParam(pass, newpass))
+
+
+}
+
+fun changePass(param: ChangePasswordParam) {
+    if (app?.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
+
+
+        produce(AuthAction.ShowLoading(true))
+        useCaseProfile.invoke(
+            viewModelScope, param
+        ) { res ->
+            when (res) {
+                is Resource.Failure -> produce(AuthAction.ShowFailureMsg(res.message.toString()))
+                is Resource.Progress -> produce(AuthAction.ShowLoading(res.loading))
+                is Resource.Success -> {
+                    produce(
+                        AuthAction.ChangedPassword(
+                            res.data.message as String
+                        )
+                    )
+                }
+            }
+        }
+    } else {
+        produce(AuthAction.ShowFailureMsg(getString(R.string.no_internet)))
+    }
+}
+fun getBanks( ) {
+    if (app?.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
+
+
+        produce(AuthAction.ShowLoading(true))
+        useCaseProfile.invoke(
+            viewModelScope, ProfileUseCase.GET_BANKS
+        ) { res ->
+            when (res) {
+                is Resource.Failure -> produce(AuthAction.ShowFailureMsg(res.message.toString()))
+                is Resource.Progress -> produce(AuthAction.ShowLoading(res.loading))
+                is Resource.Success -> {
+                    produce(
+                        AuthAction.ShowBanks(
+                            res.data.data as BanksResponse
+                        )
+                    )
+                }
+            }
+        }
+    } else {
+        produce(AuthAction.ShowFailureMsg(getString(R.string.no_internet)))
+    }
+}
+    fun getNationalities( ) {
+    if (app?.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
+
+
+        produce(AuthAction.ShowLoading(true))
+        useCaseProfile.invoke(
+            viewModelScope, ProfileUseCase.GET_NATIONALITIES
+        ) { res ->
+            when (res) {
+                is Resource.Failure -> produce(AuthAction.ShowFailureMsg(res.message.toString()))
+                is Resource.Progress -> produce(AuthAction.ShowLoading(res.loading))
+                is Resource.Success -> {
+                    produce(
+                        AuthAction.ShowNationalities(
+                            res.data.data as NationalitiesResponse
+                        )
+                    )
+                }
+            }
+        }
+    } else {
+        produce(AuthAction.ShowFailureMsg(getString(R.string.no_internet)))
+    }
+}
+}
 
 
 

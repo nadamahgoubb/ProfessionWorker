@@ -18,7 +18,7 @@
         android:label="NotifactionFragment" />
     <fragment
         android:id="@+id/customerServiceFragment"
-        android:name="com.example.professionworker.ui.fragment.contactFragments.CustomerServiceFragment"
+        android:name="com.example.professionworker.ui.fragment.contactFragments.ComplainFragment"
         android:label="ComplainsFragment" />
     <fragment
         android:id="@+id/contactUsFragment"
@@ -26,7 +26,7 @@
         android:label="ContactUsFragment" />
     <fragment
         android:id="@+id/rightAndTermsFragment"
-        android:name="com.example.professionworker.ui.fragment.RightAndTermsFragment"
+        android:name="com.example.professionworker.ui.fragment.contactFragments.RightAndTermsFragment"
         android:label="RightAndTermsFragment" />
     <fragment
         android:id="@+id/settingsFragment"
@@ -36,4 +36,8 @@
         android:id="@+id/profileFragment"
         android:name="com.example.professionworker.ui.fragment.profile.ProfileFragment"
         android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/changePassFragment"
+        android:name="com.example.professionworker.ui.fragment.changePass.ChangePassFragment"
+        android:label="ChangePassFragment" />
 </navigation>

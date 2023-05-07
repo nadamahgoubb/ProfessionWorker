@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context=".MainActivity">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_120sdp"
+            android:background="@drawable/header_black_profile"
+            android:fitsSystemWindows="true"
+            android:theme="@style/ThemeOverlay.MaterialComponents.Dark">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsingToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                app:expandedTitleMarginBottom="25dp"
+                app:expandedTitleMarginStart="15dp"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <Toolbar
+                    android:id="@+id/toolBarLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    android:contentInsetStart="0dp"
+                    android:contentInsetStartWithNavigation="0dp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:popupTheme="@style/ThemeOverlay.MaterialComponents.Dark"
+                    app:layout_collapseMode="pin">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingHorizontal="@dimen/_8sdp">
+
+                        <ImageView
+                            android:id="@+id/iv_back"
+                            android:layout_width="@dimen/_35sdp"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                             android:padding="@dimen/_2sdp"
+                            android:rotation="180"
+
+                            android:src="@drawable/ic_back_"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </RelativeLayout>
+
+
+                </Toolbar>
+
+                <RelativeLayout
+                    android:id="@+id/lyt_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="?attr/actionBarSize"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:padding="@dimen/_10sdp"
+                        android:text="@string/succssful_order"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_15sdp"
+                        android:textStyle="bold" />
+
+
+                </RelativeLayout>
+
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/lyt_login"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+
+                >
+
+
+                <ImageView
+                    android:id="@+id/iv_dawn"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_marginTop="@dimen/_35sdp"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:src="@drawable/order_sucess"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/thanks_for_order"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_dawn"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/your_order_id"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv1"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv_order_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1 "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintStart_toEndOf="@id/tv2"
+                    app:layout_constraintTop_toBottomOf="@id/tv1"
+
+                    />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_show_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_35sdp"
+                    android:backgroundTint="@color/gold"
+                    android:text="@string/view_order_details"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13sdp"
+                    android:textStyle="bold"
+                    app:cornerRadius="@dimen/_8sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_order_id" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_continue"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:backgroundTint="@color/black"
+                    android:text="@string/continuee_shopping"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13sdp"
+                    android:textStyle="bold"
+                    app:cornerRadius="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btn_show_details" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</layout>

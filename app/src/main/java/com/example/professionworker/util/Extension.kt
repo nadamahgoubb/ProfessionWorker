@@ -44,7 +44,7 @@ object Extension {
         Glide.with(this)
             .load(url)
             .apply(RequestOptions().placeholder(com.example.professionworker.R.drawable.image_gallery))
-            .error(R.drawable.error)
+            .error(com.example.professionworker.R.drawable.error)
             .into(this)
     }
 

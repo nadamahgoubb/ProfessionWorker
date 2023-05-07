@@ -8,15 +8,41 @@
     <fragment
         android:id="@+id/walkThrougthFragment"
         android:name="com.example.professionworker.ui.fragments.walkThrough.WalkThrougthFragment"
-        android:label="WalkThrougthFragment" />
+        android:label="WalkThrougthFragment">
+        <action
+            android:id="@+id/action_walkThrougthFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@+id/auth_navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.professionworker.ui.fragment.SplashFragment"
-        android:label="SplashFragment" />
+        android:label="SplashFragment">
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:launchSingleTop="true"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@+id/auth_navigation"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_walkThrougthFragment"
+            app:launchSingleTop="true"
+            app:destination="@id/walkThrougthFragment"
+            app:popUpTo="@+id/auth_navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.professionworker.ui.fragment.register.RegisterFragment"
-        android:label="RegisterFragment" />
+        android:label="RegisterFragment" >
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:launchSingleTop="true"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@+id/auth_navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.professionworker.ui.fragment.login.LoginFragment"
@@ -31,7 +57,11 @@
         android:name="com.example.professionworker.ui.fragment.forgertPass.ForgetPasswordFragment"
         android:label="ForgetPasswordFragment" />
     <fragment
-        android:id="@+id/subscribationFragment"
-        android:name="com.example.professionworker.ui.fragment.register.SubscribationFragment"
-        android:label="SubscribationFragment" />
+        android:id="@+id/rightAndTermsFragment2"
+        android:name="com.example.professionworker.ui.fragment.contactFragments.RightAndTermsFragment"
+        android:label="RightAndTermsFragment" />
+    <!-- <fragment
+         android:id="@+id/subscribationFragment"
+         android:name="com.example.professionworker.ui.fragment.register.SubscribationFragment"
+         android:label="SubscribationFragment" />-->
 </navigation>

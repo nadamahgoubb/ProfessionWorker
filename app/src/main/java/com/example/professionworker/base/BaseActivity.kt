@@ -8,6 +8,7 @@ import android.view.View
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.databinding.ObservableBoolean
 import androidx.databinding.ViewDataBinding
  import com.example.professionworker.util.LanguageUtils
 import com.example.professionworker.util.ext.bindView
@@ -16,6 +17,7 @@ import java.util.*
 
 abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity() {
 
+    val baseShowProgress = ObservableBoolean()
 
     override fun attachBaseContext(newBase: Context) {
         // get chosen language from shread preference
@@ -27,13 +29,7 @@ abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity() {
     }
 
 
-    fun showLoading(v:View) {
-     v.visibility = View.VISIBLE
-    }
 
-    fun hideLoading(v:View) {
-       v.visibility = View.GONE
-    }
     public override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)

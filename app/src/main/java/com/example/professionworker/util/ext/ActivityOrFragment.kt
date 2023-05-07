@@ -75,6 +75,26 @@ fun Fragment.setActivityResult(bundle: Bundle? = null, resultCode: Int = Activit
     })
     activity?.finish()
 }
+public  fun chat(context: Context, country_code :String,contact :String){
+    //contact = PrefsHelper.get // use country code with your phone number
+    var  contactt = country_code+contact
+    val url = "https://api.whatsapp.com/send?phone=$contactt"
+    try {
+        val pm: PackageManager = context.getPackageManager()
+        pm.getPackageInfo("com.whatsapp", PackageManager.GET_ACTIVITIES)
+        val i = Intent(Intent.ACTION_VIEW)
+        i.data = Uri.parse(url)
+        context.startActivity(i)
+    } catch (e: PackageManager.NameNotFoundException) {
+        Toast.makeText(
+            context,
+            context.getString(R.string.whatsup_not_installed),
+            Toast.LENGTH_SHORT
+        ).show()
+        e.printStackTrace()
+    }
+}
+
 
 /*This called when method onBackClick in activity is called */
 fun Fragment.onBackClick(callback: (onBackPressedCallback: OnBackPressedCallback) -> Unit) {

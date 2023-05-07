@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.createDataStore
+import com.example.professionworker.data.repo.PrefsHelper
 import com.example.professionworker.util.Constants
 import com.example.professionworker.util.ContextUtils
 import com.example.professionworker.util.SessionManager
@@ -30,7 +31,7 @@ class MyApp : Application() {
         super.onCreate()
       //  AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         dataStore = createDataStore(name = "settings")
-     //   PrefsHelper.init(applicationContext)
+        PrefsHelper.init(applicationContext)
 
     }
 

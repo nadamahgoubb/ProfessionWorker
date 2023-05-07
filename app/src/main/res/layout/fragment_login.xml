@@ -55,6 +55,7 @@
                     android:layout_marginTop="@dimen/_20sdp"
                     android:background="@drawable/bg_rounded"
                     android:hint="@string/user_name"
+                    android:text="06666666666666"
                     android:paddingStart="@dimen/_12sdp"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
@@ -88,6 +89,7 @@
                             android:layout_height="@dimen/_40sdp"
                             android:autofillHints="password"
                             android:background="@drawable/bg_rounded"
+                        android:text="123456789"
                             android:gravity="start"
                             android:hint="@string/password"
                             android:inputType="textPassword"

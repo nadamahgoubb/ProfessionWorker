@@ -1,6 +1,5 @@
 package com.example.professionworker.ui.fragment.login
 
-import android.content.Intent
 import android.graphics.Paint
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -43,15 +42,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                 showProgress(false)
 
             }
-          /*  is AuthAction.ShowAllCities -> {
-                showProgress(false)
-                action.data.cities?.let { openCitiesDialog(it) }
-            }
 
-            is AuthAction.ShowAllCountry -> {
-                showProgress(false)
-                action.data.countries?.let { openCountriesDialog(it) }
-            }*/
             else -> {
 
             }

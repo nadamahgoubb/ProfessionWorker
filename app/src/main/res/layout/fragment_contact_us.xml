@@ -90,10 +90,9 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <TextView
-                                android:id="@+id/tv_order_id"
+                                android:id="@+id/tv_goal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/goal_msg"
 
                                 android:textColor="@color/grey_400"
                                 android:textSize="@dimen/_13sdp"

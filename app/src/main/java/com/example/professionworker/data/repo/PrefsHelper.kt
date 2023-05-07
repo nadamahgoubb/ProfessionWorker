@@ -2,7 +2,7 @@ package com.example.professionworker.data.repo
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.example.professionworker.data.response.UserDataResponse
+import com.example.professionworker.domain.response.UserDataResponse
 import com.example.professionworker.util.Constants
 import com.google.gson.Gson
 
@@ -42,7 +42,7 @@ object PrefsHelper {
     }
 
 
-    fun saveUserData(user:UserDataResponse ?){
+    fun saveUserData(user: UserDataResponse?){
         //set variables of 'myObject', etc.
 
         var prefsEditor = preferences.edit()
@@ -52,7 +52,7 @@ object PrefsHelper {
         prefsEditor.putString(Constants.USER, json);
         prefsEditor.commit();
     }
-    fun getUserData():UserDataResponse?{
+    fun getUserData(): UserDataResponse?{
         //set variables of 'myObject', etc.
 
         val gson = Gson()

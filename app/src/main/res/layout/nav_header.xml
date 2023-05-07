@@ -6,10 +6,10 @@
     android:background="@color/white">
 
     <com.makeramen.roundedimageview.RoundedImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/user1"
-        android:id="@+id/iv_user"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_80sdp"
+      android:id="@+id/iv_user"
+        android:src="@drawable/empty_user"
         android:layout_marginTop="@dimen/_50sdp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,8 +21,7 @@
         app:layout_constraintStart_toStartOf="@id/iv_user"
         app:layout_constraintEnd_toEndOf="@id/iv_user"
         android:layout_height="wrap_content"
-        android:text="محمد محمود"
-        android:id="@+id/tv_name"
+         android:id="@+id/tv_name"
         android:textColor="@color/black"
         android:textStyle="bold"
         />

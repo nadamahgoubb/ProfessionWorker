@@ -21,9 +21,11 @@ import androidx.lifecycle.LifecycleOwner
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import com.example.professionworker.R
+import com.example.professionworker.data.params.AddressParams
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.IOException
+import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -100,26 +102,32 @@ open class WWLocationManager @Inject constructor(
         }
     }
 
-    fun getAddress(lat: Double?, lng: Double?): String? {
-        val geocoder = Geocoder(context)
+
+    fun getAddress(lat: Double?, lng: Double?): AddressParams? {
+        val geocoder = Geocoder(context, Locale( "En"))
         return try {
             val addressList =
                 geocoder.getFromLocation(lat ?: 0.0, lng ?: 0.0, 1)
-            var address = ""
+            var address : AddressParams? = null
             if (addressList != null && addressList.size > 0) {
                 val addressObj = addressList[0]
-                address = addressObj.getAddressLine(0)
-           //     val cityName: String = addressObj.getAddressLine(0)
-           //     val stateName: String = addressObj.getAddressLine(1)
-           //     val countryName: String = addressObj.getAddressLine(2)
-                }
+                address =AddressParams(addressObj.getAddressLine(0), addressObj.adminArea, addressObj.subAdminArea , addressObj.locality,null,lat.toString(),
+                    lng.toString() )
+            }
+            else{
+                address=AddressParams(context.resources.getString(com.example.professionworker.R.string.undefined),
+                    context.resources.getString( R.string.undefined),
+                    context.resources.getString(R.string.undefined),
+                    context.resources.getString(R.string.undefined),
+                    context.resources.getString( R.string.undefined),
+                    lat.toString(),lng.toString(),)
+            }
             address
         } catch (e: IOException) {
-         //   e.showLogMessage()
+            //   e.showLogMessage()
             null
         }
     }
-
 
     fun isLocationEnabled(): Boolean {
         val locationManager: LocationManager =

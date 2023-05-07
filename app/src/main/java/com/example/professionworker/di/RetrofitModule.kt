@@ -4,6 +4,7 @@ package com.example.professionworker.di
 import com.example.professionworker.base.NetworkResponseAdapterFactory
 import com.example.professionworker.data.dataSource.remote.ApiBase
 import com.example.professionworker.data.dataSource.remote.ApiInterface
+import com.example.professionworker.data.repo.PrefsHelper
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -36,9 +37,9 @@ object RetrofitModule {
                     //  .addHeader(Constants.Token_HEADER ,DataStoreManger()?.read(Constants.Token_KEY))
                     .addHeader("Content-Type", "application/json")
                     .addHeader("Accept", "application/json")
-                    .addHeader("lang", /*PrefsHelper.getLanguage()*/ "en")
+                    .addHeader("lang", /*PrefsHelper.getLanguage()*/ "ar")
 
-                //     .addHeader("Authorization", "Bearer " +    roomDao.getUserData()?.accessToken  )
+             .addHeader("Authorization", "Bearer " +    PrefsHelper.getToken() )
 
                 val request = requestBuilder.build()
                 chain.proceed(request)

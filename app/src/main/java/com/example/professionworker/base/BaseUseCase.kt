@@ -23,7 +23,7 @@ abstract class BaseUseCase<RequestType : BaseResponse, params : Any> :
                     is NetworkResponse.Success -> {
                         if (it.code == 200
                         ) {
-                            if(it.body.status==false){
+                            if(it.body.result==false){
                                 showFailureMessage(onResult, it.body.message)
 
                             }else{

@@ -11,8 +11,10 @@ open class BaseResponse(
 
     @SerializedName("message")
     val message: String = "",
-    @SerializedName("status")
-    val status: Boolean = false
+    @SerializedName("errNum")
+    val errNum: String = "",
+    @SerializedName("result")
+    val result: Boolean = false
     // val Error: String?,
 ) : Parcelable
 
@@ -48,11 +50,25 @@ data class MainResponsePaging<T>(
     val dataPaging: DataPaging<T>
 )
 
-data class DataPaging<T>(
-    val page: Int? = 0,
-    val listDataPaging: ListDataPaging<T>?,
-    val total_pages: Int = 0
+data class DataPaging<T> (
+
+    @SerializedName("current_page"   ) var currentPage  : Int?             = null,
+    @SerializedName("data"           ) var data         : ArrayList<T>  = arrayListOf(),
+    @SerializedName("first_page_url" ) var firstPageUrl : String?          = null,
+    @SerializedName("from"           ) var from         : Int?             = null,
+    @SerializedName("last_page"      ) var lastPage     : Int?             = null,
+    @SerializedName("last_page_url"  ) var lastPageUrl  : String?          = null,
+    @SerializedName("next_page_url" ) var nextPageUrl  : String?          = null,
+    @SerializedName("path"           ) var path         : String?          = null,
+    @SerializedName("per_page"       ) var perPage      : Int?             = null,
+    @SerializedName("prev_page_url"  ) var prevPageUrl  : String?          = null,
+    @SerializedName("to"             ) var to           : Int?             = null,
+    @SerializedName("total"          ) var total        : Int?             = null
+
 )
+
+
+
 
 data class ListDataPaging<T>(
 

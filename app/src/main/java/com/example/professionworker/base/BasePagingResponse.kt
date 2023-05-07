@@ -8,10 +8,13 @@ import kotlinx.android.parcel.Parcelize
 import kotlinx.android.parcel.RawValue
 
 data class BasePagingResponse<T> (
+    @SerializedName("data") var data: DataPaging<T>? = null
+/*
 
     @SerializedName("page") var page: Int? = null,
     @SerializedName("total_pages") var totalPages: Int? = null,
     @SerializedName("orders") var listOfData: ArrayList<T>? = arrayListOf()
+*/
 
 
     ) : BaseResponse(){

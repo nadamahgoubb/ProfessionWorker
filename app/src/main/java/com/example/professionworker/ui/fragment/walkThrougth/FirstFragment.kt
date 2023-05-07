@@ -6,7 +6,10 @@ import com.example.professionworker.base.BaseFragment
 import com.example.professionworker.util.ext.loadImage
 
 
-class FirstFragment( var state: Int) : BaseFragment<ItemWalkthrougthBinding>() {
+interface OnClickSkipListener {
+    fun onSkipClickListener()
+}
+class FirstFragment( val state: Int, val  listener: OnClickSkipListener) : BaseFragment<ItemWalkthrougthBinding>() {
 
 
     private fun setUpUi() {
@@ -35,5 +38,8 @@ class FirstFragment( var state: Int) : BaseFragment<ItemWalkthrougthBinding>() {
 
     override fun onFragmentReady() {
         setUpUi()
+        binding.tvSkip.setOnClickListener {
+            listener.onSkipClickListener()
+        }
     }
 }

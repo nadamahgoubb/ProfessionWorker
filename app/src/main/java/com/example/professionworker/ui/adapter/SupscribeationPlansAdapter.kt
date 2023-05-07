@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.professionworker.R
-import com.example.professionworker.data.response.SubscibationPlanResponse
+import com.example.professionworker.domain.response.SubscibationPlanResponse
 import com.example.professionworker.databinding.ItemSubscribationPlansBinding
 import com.example.professionworker.ui.listener.SubscribationPlansOnClickListener
 

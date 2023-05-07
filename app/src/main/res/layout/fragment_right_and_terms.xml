@@ -60,11 +60,12 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
+                        android:id="@+id/tv_terms"
                         android:layout_width="match_parent"
+                        android:paddingTop="@dimen/_10sdp"
                         android:layout_height="match_parent"
                         android:layout_marginHorizontal="@dimen/_10sdp"
-                        android:text="@string/terms_txt"
-                        android:textColor="@color/grey_800"
+                         android:textColor="@color/grey_800"
                         android:textSize="@dimen/_12sdp" />
 
 

@@ -1,5 +1,6 @@
 package com.example.professionworker.ui.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.professionworker.R
@@ -8,17 +9,25 @@ import android.view.Gravity
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import com.example.professionworker.base.BaseActivity
+import com.example.professionworker.data.repo.PrefsHelper
 import com.example.professionworker.databinding.ActivityMainBinding
+import com.example.professionworker.util.Constants
+import com.example.professionworker.util.ext.isNull
+import com.example.professionworker.util.ext.loadImage
+import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.nav_header.view.*
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity<ActivityMainBinding>() {
+class MainActivity : BaseActivity<ActivityMainBinding>(),
+NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var navController: NavController
     lateinit var appBarConfiguration: AppBarConfiguration
@@ -26,6 +35,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding.progress = baseShowProgress
         setupNavController()
     }
 
@@ -56,11 +66,58 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
+
         var headerview = binding.navViewSideNav.getHeaderView(0);
+        var menu =  binding.navViewSideNav.menu
+
+            headerview.tv_name.setText(PrefsHelper.getUserData()?.name)
+            headerview.iv_user.loadImage(PrefsHelper.getUserData()?.photo, isCircular = true)
+
+       //     menu.findItem(androidx.navigation.ui.R.id.logout).isVisible= true
+        //    menu.findItem(androidx.navigation.ui.R.id.login).isVisible= false
+
         headerview.iv_cancel.setOnClickListener {
             closeDrawer()
 
         }
+        headerview.iv_user.setOnClickListener{
+
+            navController.navigate(R.id.profileFragment)
+
+        }
+        binding.navViewSideNav.setNavigationItemSelectedListener(this)
+
+    }
+
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        // Handle navigation view item clicks here.
+        val id = item.itemId
+        var fragment: Fragment? = null
+        val fragmentManager: FragmentManager = supportFragmentManager
+        if (id == R.id.logout) {
+            PrefsHelper.clear()
+            val intent = Intent(this, AuthActivity::class.java)
+            intent.putExtra(Constants.Start, Constants.login)
+            startActivity(intent)
+            this?.finish()
+        }  else if (id ==  R.id.settingsFragment) {
+
+            navController.navigate(R.id.settingsFragment)
+        } else if (id == R.id.rightAndTermsFragment) {
+            navController.navigate(R.id.rightAndTermsFragment)
+
+
+        } else if (id == R.id.customerServiceFragment) {
+            navController.navigate(R.id.customerServiceFragment)
+
+        } else if (id == R.id.contactUsFragment) {
+            navController.navigate(R.id.contactUsFragment)
+
+        }
+        closeDrawer()
+
+        return true
     }
 
     //bottom nav

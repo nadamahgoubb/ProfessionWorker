@@ -57,18 +57,6 @@
                 app:layout_constraintStart_toStartOf="@+id/tv1"
                 app:layout_constraintTop_toBottomOf="@+id/tv1">
 
-                <TextView
-                    android:id="@+id/tv_status_msg_waiting_approval"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:text="@string/waiting_approval"
-                    android:textColor="@color/green_A400"
-                    android:textSize="@dimen/_10ssp"
-                    android:textStyle="bold"
-                    android:visibility="gone"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_status_compelted"
@@ -83,6 +71,18 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <TextView
+                    android:id="@+id/tv_status_in_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:text="@string/inprogress_order"
+                    android:textColor="@color/green_400"
+                    android:textSize="@dimen/_10ssp"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
                 <TextView
                     android:id="@+id/tv_status_new_order"
                     android:layout_width="wrap_content"

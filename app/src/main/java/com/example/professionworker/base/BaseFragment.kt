@@ -9,6 +9,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.example.professionworker.util.LoadingUtil
 import com.example.professionworker.util.ext.bindView
+import com.example.professionworker.util.ext.castToActivity
 import com.example.professionworker.util.ext.showAppToast
 import com.example.professionworker.util.ext.showErrorDialog
 
@@ -49,12 +50,12 @@ abstract class BaseFragment<B : ViewDataBinding> : Fragment() {
     }
 
 
-    fun showProgress(show: Boolean) {
-        if (show == false) loadingUtil.hideLoading()
-        else loadingUtil.showLoading()
 
+    fun showProgress(show: Boolean = true) {
+        castToActivity<BaseActivity<*>> {
+            it?.baseShowProgress?.set(show)
+        }
     }
-
     fun showDialog(message: String?) {
         context?.showErrorDialog(message)
     }

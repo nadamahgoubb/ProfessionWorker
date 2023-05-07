@@ -26,4 +26,9 @@
         android:id="@+id/settingsFragment"
         android:title="@string/settings"
         android:icon="@drawable/ic_settings"/>
+    <item
+        android:id="@+id/logout"
+        android:title="@string/logout"
+        android:iconTint="@color/orange_50"
+        android:icon="@drawable/ic_logout"/>
 </menu>
