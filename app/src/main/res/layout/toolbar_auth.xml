@@ -44,6 +44,7 @@
 
         <ImageView
             android:id="@+id/iv_back"
+            android:rotation="180"
 
             android:layout_marginStart="@dimen/_10sdp"    android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"

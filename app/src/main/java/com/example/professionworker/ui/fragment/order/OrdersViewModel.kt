@@ -24,6 +24,7 @@ class OrdersViewModel
     BaseViewModel<OrdersAction>(app) {
 
   var   orderId :String =""
+  var  data: OrdersItem? = null
     fun getOrders(state: String) {
         if (app?.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
 
@@ -57,29 +58,6 @@ class OrdersViewModel
                     is Resource.Progress -> produce(OrdersAction.ShowLoading(res.loading))
                     is Resource.Success -> {
                          produce(OrdersAction.ShowOrders(res.data.data as OrderdResponse, state))
-
-                    }
-                }
-            }
-        } else {
-            produce(OrdersAction.ShowFailureMsg(getString(R.string.no_internet)))
-        }
-    }
-    fun getOrderDetails(orderId: String) {
-        if (app?.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
-
-
-            produce(OrdersAction.ShowLoading(true))
-            useCase.invoke(
-                viewModelScope, OrderDetailsParam(
-                    orderId
-                )
-            ) { res ->
-                when (res) {
-                    is Resource.Failure -> produce(OrdersAction.ShowFailureMsg(res.message.toString()))
-                    is Resource.Progress -> produce(OrdersAction.ShowLoading(res.loading))
-                    is Resource.Success -> {
-                         produce(OrdersAction.ShowOrderDetails(res.data.data as OrdersItem))
 
                     }
                 }
@@ -123,28 +101,7 @@ class OrdersViewModel
                     is Resource.Failure -> produce(OrdersAction.ShowFailureMsg(res.message.toString()))
                     is Resource.Progress -> produce(OrdersAction.ShowLoading(res.loading))
                     is Resource.Success -> {
-                        produce(OrdersAction.ShowOrderActions(res.data.message as String))
-                    }
-                }
-            }
-        } else {
-            produce(OrdersAction.ShowFailureMsg(getString(R.string.no_internet)))
-        }
-    }
-     fun getOrderDeatils(
-        params: OrderDetailsParam
-    ) {
-        if (app?.let { it1 -> NetworkConnectivity.hasInternetConnection(it1) } == true) {
-
-            produce(OrdersAction.ShowLoading(true))
-            useCase.invoke(
-                viewModelScope, params
-            ) { res ->
-                when (res) {
-                    is Resource.Failure -> produce(OrdersAction.ShowFailureMsg(res.message.toString()))
-                    is Resource.Progress -> produce(OrdersAction.ShowLoading(res.loading))
-                    is Resource.Success -> {
-                        produce(OrdersAction.ShowOrderDetails(res.data.data as OrdersItem))
+                        produce(OrdersAction.ShowOrderActions(res.data.message as String,params))
                     }
                 }
             }

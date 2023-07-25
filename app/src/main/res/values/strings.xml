@@ -1,13 +1,12 @@
 <resources>
-    <string name="app_name">Provider</string>
+    <string name="app_name">مهن</string>
     <string name="ok">Ok</string>
     <string name="error">Error</string>
     <string name="yes">Yes</string>
     <string name="no">لا</string>
     <string name="location_is_off">location_is_off</string>
     <string name="location_off_body_message">location_off_body_message</string>
-    <string name="choose_branch_count">Please Select Number of Branches</string>
-    <string name="next">التالى</string>
+     <string name="next">التالى</string>
     <string name="skip">تخطى</string>
     <string name="services">خدمات متنوعه</string>
     <string name="with_simple_steps">بخطوات بسيطة</string>
@@ -34,8 +33,9 @@
     <string name="register_new_account">مقدم جديد</string>
     <string name="register_new_account_"> تسجيل مقدم جديد</string>
     <string name="enter_your_email">قم يادخال بريد الكترونى الخاص بك</string>
+    <string name="enter_your_emailto_get_code"> قم يادخال بريد الكترونى الخاص بك لكى تتمكن من تغيير كلمة المرور  </string>
     <string name="change_password">تغيير كلمة المرور</string>
-    <string name="if_you_cant_have_acode">اذا لم يمكنك الحصول على الرمز</string>
+    <string name="if_you_cant_have_acode">اذا لم يمكنك الحصول على الرمز يمكنك</string>
     <string name="resend">اعاده الارسال</string>
     <string name="new_password">كلمه المرور الجديدة</string>
     <string name="profile">الملف الشخصي</string>
@@ -61,8 +61,7 @@
 <![CDATA[
 بالقيام بالتسجيل لدينا فأنت تقم بالموافقه على <font color=\'#dd9c40\'>الشروط والاحكام</font> الخاصه بنا ]]>
     </string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="account_id">رقم الحساب</string>
     <string name="account_name">اسم الحساب</string>
     <string name="bank">اسم البنك</string>
@@ -96,7 +95,8 @@
     <string name="new_order">طلب جديد</string>
     <string name="orders_details">تفاصيل الطلب</string>
     <string name="on_hold_msg">تم ارسال طلبك بنجاح الى مقدم الخدمة .سيتم مراجعه طلبك قبل الموافقه عليه ثم سيتواصل معك مقدم خدمه لاعلام سيادتكم باى تفاصيل اخري</string>
-    <string name="order_id">رقم الطلب</string>
+    <string name="order_id">رقم الطلب :</string>
+    <string name="order_id_">رقم الطلب</string>
     <string name="payment_meyhod">طرق الدفع</string>
     <string name="cash">نقدى</string>
     <string name="client">طالب الخدمة</string>
@@ -126,7 +126,6 @@
     <string name="account_type">نوع الحساب</string>
     <string name="individual">فرد</string>
     <string name="comp">شركة</string>
-
 
 
         <string name="choose_service_type">اختر نوع الخدمة</string>
@@ -253,4 +252,11 @@
     <string name="msg_empty_title">برجاء إدخال عنوان الشكوى</string>
     <string name="done_service">تم تقديم الخدمة</string>
     <string name="user">طالب الخدمة</string>
+    <string name="total_cost">اجمالى التكلفه المبدئيه</string>
+    <string name="tax">ضريبه القيمه المضافه</string>
+    <string name="total_">الاجمالي</string>
+    <string name="no_reviews">لا توجد تقييمات حتى الان</string>
+    <string name="text">تم طلبك بنجاح</string>
+    <string name="bill">الفاتوره</string>
+
 </resources>

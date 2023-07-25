@@ -41,6 +41,13 @@
                 </com.google.android.material.appbar.CollapsingToolbarLayout>
             </com.google.android.material.appbar.AppBarLayout>
 
+            <com.example.professionworker.base.OnlyVerticalSwipeRefreshLayout
+                android:id="@+id/swiperefresh_home"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
@@ -58,69 +65,57 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_offers_home"
+                        android:id="@+id/rv_reviews"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:clipToPadding="false"
                         android:orientation="vertical"
-                        android:visibility="gone"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:itemCount="4"
+                        tools:itemCount="2"
                         tools:listitem="@layout/item_provider" />
 
-                    <LinearLayout
-                        android:id="@+id/lyt_reviews"
-                        android:layout_marginHorizontal="@dimen/_10sdp"
-                        android:layout_width="match_parent"
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/lyt_empty_state"
+               android:visibility="gone"         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:clipToPadding="false"
-                        android:orientation="vertical"
-                        android:paddingTop="@dimen/_10sdp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                      >
 
+                        <ImageView
+                            android:id="@+id/iv_unauth"
+                            android:layout_width="@dimen/_200sdp"
+                            android:layout_height="@dimen/_200sdp"
+                            android:layout_marginTop="@dimen/_50sdp"
+                            android:src="@drawable/no_reviews"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                        <include
-                            android:id="@+id/item1"
-                            layout="@layout/item_provider"
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:id="@+id/tv_unauth"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/_4sdp" />
-
-                        <include
-                            android:id="@+id/item2"
-                            layout="@layout/item_provider"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/_4sdp" />
-
-                        <include
-                            android:id="@+id/item3"
-                            layout="@layout/item_provider"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/_4sdp" />
-
-                        <include
-                            android:id="@+id/item4"
-                            layout="@layout/item_provider"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/_4sdp" />
+                            android:paddingTop="@dimen/_15sdp"
+                            android:text="@string/no_reviews"
+                            android:textColor="@color/grey_800"
+                            android:textSize="@dimen/_13sdp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/iv_unauth" />
 
 
-                    </LinearLayout>
 
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
                 </RelativeLayout>
 
             </androidx.core.widget.NestedScrollView>
+            </com.example.professionworker.base.OnlyVerticalSwipeRefreshLayout>
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

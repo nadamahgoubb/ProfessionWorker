@@ -34,8 +34,7 @@
                 android:drawableStart="@drawable/ic_location"
                 android:drawablePadding="@dimen/_2sdp"
                 android:drawableTint="@color/gray_800"
-                android:text="127,23كم"
-                android:textColor="@color/gray_800"
+                 android:textColor="@color/gray_800"
                 android:textSize="@dimen/_10sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -59,8 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginTop="@dimen/_3sdp"
-                android:text="احمد محمد "
-                android:textColor="@color/black"
+                 android:textColor="@color/black"
                 android:textSize="@dimen/_10sdp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/iv_user"
@@ -95,8 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"
-                android:text="4.5"
-                android:textSize="@dimen/_10sdp"
+                 android:textSize="@dimen/_10sdp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/tv_name"
 
@@ -109,8 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:text="خبره في تركيب معدات السباكه     \n وتاسيس مواسير المياه  "
-                android:textColor="@color/grey_600"
+                 android:textColor="@color/grey_600"
                 android:textSize="@dimen/_10sdp"
                 app:layout_constraintStart_toStartOf="@+id/tv_name"
                 app:layout_constraintTop_toBottomOf="@+id/tv_name" />
@@ -142,8 +138,7 @@
                     android:layout_height="wrap_content"
 
                     android:layout_centerInParent="true"
-                    android:text="23 ر.س"
-                    android:textColor="@color/gold"
+                     android:textColor="@color/gold"
                     android:textSize="@dimen/_6sdp"
                     android:textStyle="bold" />
 

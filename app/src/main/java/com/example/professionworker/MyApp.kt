@@ -29,7 +29,7 @@ class MyApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-      //  AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+      AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         dataStore = createDataStore(name = "settings")
         PrefsHelper.init(applicationContext)
 

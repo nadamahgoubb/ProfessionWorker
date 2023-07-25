@@ -21,14 +21,10 @@
     <item
         android:id="@+id/rightAndTermsFragment"
         android:title="@string/rights_and_terms"
-        android:icon="@drawable/ic_terms"/>
+        android:icon="@drawable/selector_terms"/>
     <item
         android:id="@+id/settingsFragment"
         android:title="@string/settings"
         android:icon="@drawable/ic_settings"/>
-    <item
-        android:id="@+id/logout"
-        android:title="@string/logout"
-        android:iconTint="@color/orange_50"
-        android:icon="@drawable/ic_logout"/>
+
 </menu>

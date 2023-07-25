@@ -1,6 +1,7 @@
 package com.example.professionworker.ui.fragment.notifaction
 
 
+import android.view.View
 import androidx.core.view.isVisible
 import com.example.professionworker.R
 import com.example.professionworker.base.BaseFragment
@@ -12,8 +13,10 @@ class NotifactionFragment : BaseFragment<FragmentNotifactionBinding>() {
     private fun setupToolbar() {
         parent = requireActivity() as MainActivity
         binding.toolbar.tvTitle.setText(resources.getString(R.string.notifactions))
-        binding.toolbar.ivMenu.isVisible = true
-         binding.toolbar.ivMenu.setOnClickListener {
+        binding.toolbar.ivMenu. visibility=  View.VISIBLE
+        binding.toolbar.ivBack. visibility=  View.INVISIBLE
+
+        binding.toolbar.ivMenu.setOnClickListener {
             parent.openDrawer()
         }
         binding.toolbar.ivBack.setOnClickListener {

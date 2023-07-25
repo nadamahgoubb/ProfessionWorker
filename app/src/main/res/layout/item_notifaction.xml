@@ -33,11 +33,10 @@
                 android:id="@+id/tv_noti_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="تم طلبك بنجاح"
+                android:text="@string/text"
                 android:textColor="@color/black"
-                android:textDirection="ltr"
-                android:layout_marginStart="@dimen/_3sdp"
-                android:textSize="@dimen/_14ssp"
+                 android:layout_marginStart="@dimen/_3sdp"
+                android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toEndOf="@id/iv_noti"
                 app:layout_constraintTop_toTopOf="parent" />
 

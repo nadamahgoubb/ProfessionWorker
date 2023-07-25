@@ -26,7 +26,7 @@ class ReviewsAdapter(
         holder.binding.tvName.text = currentItem?.userName
         holder.binding.tvRate.text = currentItem?.rate?.roundTo(2).toString()
         holder.binding.tvDesc.text = currentItem?.comment
-        holder.binding.ivUser.loadImage(currentItem?.providerPhoto)
+        holder.binding.ivUser.loadImage(currentItem?.providerPhoto , isCircular = true)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewsViewHolder {

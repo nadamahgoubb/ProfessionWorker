@@ -19,8 +19,7 @@ import com.example.professionworker.base.BaseActivity
 import com.example.professionworker.data.repo.PrefsHelper
 import com.example.professionworker.databinding.ActivityMainBinding
 import com.example.professionworker.util.Constants
-import com.example.professionworker.util.ext.isNull
-import com.example.professionworker.util.ext.loadImage
+ import com.example.professionworker.util.ext.loadImage
 import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.nav_header.view.*
@@ -71,7 +70,7 @@ NavigationView.OnNavigationItemSelectedListener {
         var menu =  binding.navViewSideNav.menu
 
             headerview.tv_name.setText(PrefsHelper.getUserData()?.name)
-            headerview.iv_user.loadImage(PrefsHelper.getUserData()?.photo, isCircular = true)
+            headerview.iv_user.loadImage(PrefsHelper.getUserData()?.photo, placeHolderImage = R.drawable.empty_user, isCircular = true , errorImage = R.drawable.empty_user)
 
        //     menu.findItem(androidx.navigation.ui.R.id.logout).isVisible= true
         //    menu.findItem(androidx.navigation.ui.R.id.login).isVisible= false
@@ -80,13 +79,16 @@ NavigationView.OnNavigationItemSelectedListener {
             closeDrawer()
 
         }
-        headerview.iv_user.setOnClickListener{
 
-            navController.navigate(R.id.profileFragment)
-
-        }
         binding.navViewSideNav.setNavigationItemSelectedListener(this)
+        binding.tvLogout.setOnClickListener {
 
+            PrefsHelper.clear()
+            var intent = Intent(this, AuthActivity::class.java)
+            intent.putExtra(Constants.Start, Constants.login)
+            startActivity(intent)
+            this?.finish()
+        }
     }
 
 
@@ -95,13 +97,7 @@ NavigationView.OnNavigationItemSelectedListener {
         val id = item.itemId
         var fragment: Fragment? = null
         val fragmentManager: FragmentManager = supportFragmentManager
-        if (id == R.id.logout) {
-            PrefsHelper.clear()
-            val intent = Intent(this, AuthActivity::class.java)
-            intent.putExtra(Constants.Start, Constants.login)
-            startActivity(intent)
-            this?.finish()
-        }  else if (id ==  R.id.settingsFragment) {
+       if (id ==  R.id.settingsFragment) {
 
             navController.navigate(R.id.settingsFragment)
         } else if (id == R.id.rightAndTermsFragment) {
@@ -135,12 +131,12 @@ NavigationView.OnNavigationItemSelectedListener {
     fun openDrawer() {
         //    if(!binding.drawerLayout.isVisible)
         //    binding.drawerLayout.openDrawer(GravityCompat.END)
-        binding.drawerLayout.openDrawer(Gravity.LEFT);
+        binding.drawerLayout.openDrawer(Gravity.END);
 
     }
 
     fun closeDrawer() {
-        binding.drawerLayout.closeDrawer(Gravity.LEFT)
+        binding.drawerLayout.closeDrawer(Gravity.END)
     }
 
     fun showBottomNav(isVisible: Boolean) {

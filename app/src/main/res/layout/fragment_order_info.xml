@@ -41,27 +41,19 @@
             </com.google.android.material.appbar.AppBarLayout>
 
 
-            <com.example.professionworker.base.OnlyVerticalSwipeRefreshLayout
-                android:id="@+id/swiperefresh_home"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
 
                 <androidx.core.widget.NestedScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                     app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                      app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <RelativeLayout
                         android:id="@+id/lyt_data"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical">
+           android:visibility="gone"             android:orientation="vertical">
 
                         <LinearLayout
                             android:id="@+id/lyt_information"
@@ -77,7 +69,7 @@
                                 android:layout_marginTop="@dimen/_10sdp">
 
                                 <com.google.android.material.card.MaterialCardView
-                                    android:id="@+id/card_waiting_approval"
+                                    android:id="@+id/card_new_order"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginHorizontal="@dimen/_10sdp"
@@ -103,23 +95,12 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_marginTop="@dimen/_4sdp"
-                                            android:text="@string/waiting_approval"
+                                            android:text="@string/new_order"
                                             android:textColor="@color/gold"
                                             android:textSize="@dimen/_10ssp"
                                             android:textStyle="bold"
                                             app:layout_constraintStart_toStartOf="parent"
                                             app:layout_constraintTop_toTopOf="parent" />
-
-                                        <TextView
-                                            android:id="@+id/tv_msg"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="@string/on_hold_msg"
-                                            android:textColor="@color/grey_400"
-                                            android:textSize="@dimen/_12sdp"
-                                            app:layout_constraintEnd_toEndOf="parent"
-                                            app:layout_constraintStart_toStartOf="@id/tv_status_msg"
-                                            app:layout_constraintTop_toBottomOf="@id/tv_status_msg" />
 
 
                                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -235,7 +216,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="@dimen/_4sdp"
-                                        android:text="رقم الطلب"
+                                        android:text="@string/order_id"
                                         android:textColor="@color/black"
                                         android:textSize="@dimen/_12sdp"
                                         android:textStyle="bold"
@@ -382,7 +363,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="@dimen/_8sdp"
                                         android:layout_marginTop="@dimen/_3sdp"
-                                        android:text="mmmmmmmmmmmmmm"
+                                        android:text=" "
                                         android:textColor="@color/black"
                                         android:textSize="@dimen/_10sdp"
                                         android:textStyle="bold"
@@ -421,44 +402,65 @@
                                     <TextView
 
                                         android:id="@+id/tv_address"
-                                        android:layout_width="wrap_content"
+                                        android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:drawableStart="@drawable/ic_location"
                                         android:drawablePadding="@dimen/_5sdp"
                                         android:drawableTint="@color/grey_400"
-                                        android:text="hhhhhhhhhhhhhhhhhhh"
+                                         android:textAlignment="viewStart"
                                         android:textColor="@color/grey_400"
                                         android:textSize="@dimen/_10sdp"
                                         android:textStyle="bold"
+                                        app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintStart_toStartOf="@+id/tv_name"
                                         app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
-                                    <ImageView
+                                                           <androidx.cardview.widget.CardView
 
-                                        android:id="@+id/iv_Call"
-                                        android:layout_width="@dimen/_25sdp"
-                                        android:layout_height="@dimen/_25sdp"
-                                        android:padding="@dimen/_7sdp"
-                                        android:src="@drawable/ic_call"
-                                        android:textColor="@color/grey_600"
-                                        android:textSize="@dimen/_8sdp"
-                                        android:textStyle="bold"
-                                         app:layout_constraintEnd_toEndOf="parent"
-                                        app:layout_constraintTop_toBottomOf="@id/tv_address" />
-
-                                    <ImageView
-                                        android:id="@+id/iv_location"
+                        android:id="@+id/lyt_call"
                                         android:layout_width="@dimen/_30sdp"
                                         android:layout_height="@dimen/_30sdp"
-                                        android:src="@drawable/ic_location"
-                                        app:layout_constraintBottom_toBottomOf="@+id/iv_Call"
-                               android:visibility="gone"         app:layout_constraintEnd_toStartOf="@id/iv_Call"
-                                        app:layout_constraintStart_toEndOf="@id/tv_address"
-                                        app:layout_constraintTop_toTopOf="@id/iv_Call"
-                                        app:tint="@color/gold"
+                                        android:layout_marginBottom="@dimen/_5sdp"
+                                        android:background="@drawable/bg_white_rounded"
+                                        app:layout_constraintEnd_toEndOf="parent"
 
-                                        />
+                                                        android:layout_marginEnd="@dimen/_3sdp"       app:cardCornerRadius="@dimen/_3sdp"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@id/tv_address">
 
+                                                               <ImageView
+
+                                                                   android:id="@+id/iv_Call"
+                                                                   android:layout_width="@dimen/_25sdp"
+                                                                   android:layout_height="@dimen/_25sdp"
+                                                                   android:layout_centerHorizontal="true"
+                                                                   android:layout_centerVertical="true"
+                                                                   android:layout_gravity="center"
+                                                                   android:padding="@dimen/_7sdp"
+                                                                   android:src="@drawable/ic_call" />
+
+                                                           </androidx.cardview.widget.CardView>
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/lyt_location"
+                                        android:layout_width="@dimen/_30sdp"
+                                        android:layout_height="@dimen/_30sdp"
+                                        app:cardCornerRadius="@dimen/_3sdp"
+                                        app:cardElevation="@dimen/_3sdp"
+                                          app:layout_constraintBottom_toBottomOf="@+id/lyt_call"
+                                        android:layout_marginHorizontal="@dimen/_5sdp"
+                                        app:layout_constraintEnd_toStartOf="@id/lyt_call"
+                                        app:layout_constraintTop_toTopOf="@id/lyt_call">
+
+                                        <ImageView
+                                            android:id="@+id/iv_location"
+                                            android:layout_width="@dimen/_25sdp"
+                                            android:layout_height="@dimen/_25sdp"
+                                             android:padding="@dimen/_6sdp"
+                                            android:src="@drawable/ic_location"
+                                             app:tint="@color/gold"
+android:layout_gravity="center"
+                                            />
+                                    </androidx.cardview.widget.CardView>
 
                                 </androidx.constraintlayout.widget.ConstraintLayout>
                             </androidx.cardview.widget.CardView>
@@ -649,7 +651,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="@dimen/_8sdp"
                                         android:layout_marginTop="@dimen/_10sdp"
-                                        android:text="الفاتوره"
+                                        android:text="@string/bill"
                                         android:textColor="@color/black"
                                         android:textSize="@dimen/_12sdp"
                                         android:textStyle="bold"
@@ -675,7 +677,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="@dimen/_3sdp"
 
-                                        android:text="اجمالى التكلفه المبدئيه"
+                                        android:text="@string/total_cost"
                                         android:textColor="@color/grey_400"
                                         android:textSize="@dimen/_10sdp"
                                         app:layout_constraintStart_toStartOf="@id/tv_8"
@@ -688,7 +690,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="@dimen/_6sdp"
-                                        android:text="ضريبه القيمه المضافه"
+                                        android:text="@string/tax"
                                         android:textColor="@color/grey_400"
                                         android:textSize="@dimen/_10sdp"
                                         app:layout_constraintStart_toStartOf="@id/tv_8"
@@ -700,7 +702,6 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginEnd="@dimen/_10sdp"
-                                        android:text="415 ر.س"
                                         android:textColor="@color/grey_400"
                                         android:textSize="@dimen/_10sdp"
                                         android:textStyle="bold"
@@ -712,7 +713,6 @@
                                         android:id="@+id/tv_tax"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="40 ر.س"
                                         android:textColor="@color/grey_400"
                                         android:textSize="@dimen/_10sdp"
                                         android:textStyle="bold"
@@ -738,7 +738,7 @@
                                         android:layout_marginTop="@dimen/_6sdp"
                                         android:paddingHorizontal="@dimen/_6sdp"
                                         android:paddingVertical="@dimen/_10sdp"
-                                        android:text="الاجمالي "
+                                        android:text="@string/total_"
                                         android:textColor="@color/black"
                                         android:textSize="@dimen/_14sdp"
                                         android:textStyle="bold"
@@ -751,7 +751,6 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:paddingVertical="@dimen/_10sdp"
-                                        android:text="455 ر.س"
                                         android:textColor="@color/black"
                                         android:textSize="@dimen/_14sdp"
                                         android:textStyle="bold"
@@ -795,6 +794,7 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
                                 android:paddingHorizontal="@dimen/_16sdp"
+                                android:paddingTop="@dimen/_20sdp"
                                 android:visibility="gone"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -841,6 +841,8 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
                                 android:paddingHorizontal="@dimen/_16sdp"
+                                android:paddingTop="@dimen/_20sdp"
+                                android:visibility="gone"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/iv_dawn"
@@ -866,7 +868,6 @@
 
 
                 </androidx.core.widget.NestedScrollView>
-            </com.example.professionworker.base.OnlyVerticalSwipeRefreshLayout>
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+         </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -97,8 +97,7 @@ interface ApiInterface {
         @Field("content") content: String? = null,
     ): NetworkResponse<DevResponse<Any>, ErrorResponse>
 
-    @FormUrlEncoded
-    @POST("provider/orders/reviews")
+     @GET("provider/orders/reviews")
     suspend fun getReviews(
 
     ): NetworkResponse<DevResponse<ReviewsResponse>, ErrorResponse>
@@ -116,7 +115,7 @@ interface ApiInterface {
     @POST("provider/profile/delete")
     suspend fun deleteProfile(
     ): NetworkResponse<DevResponse<Any>, ErrorResponse>
-
+@FormUrlEncoded
     @POST("provider/profile/change_password")
     suspend fun changePassword(
         @Field("old_password") old_password: String,

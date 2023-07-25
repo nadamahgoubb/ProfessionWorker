@@ -49,7 +49,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_8sdp"
                 android:orientation="vertical"
-                 app:layout_constraintEnd_toEndOf="parent"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_title">
 
@@ -89,10 +90,10 @@
             <LinearLayout
                 android:id="@+id/lyt_data2"
                 android:layout_width="match_parent"
-               android:layout_height="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_10sdp"
                 android:orientation="vertical"
-       android:visibility="gone"          app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/lyt_data1">
@@ -106,7 +107,7 @@
                     android:background="@drawable/bg_rounded"
                     android:hint="@string/user_name"
                     android:paddingHorizontal="@dimen/_10sdp"
-
+                   
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
 
@@ -118,6 +119,7 @@
                     android:background="@drawable/bg_rounded"
                     android:hint="@string/id"
                     android:paddingHorizontal="@dimen/_10sdp"
+                   
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
 
@@ -131,6 +133,8 @@
                     android:gravity="center_vertical"
                     android:hint="@string/nationality"
                     android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_3sdp"
+                   
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
 
@@ -146,6 +150,7 @@
                     android:hint="@string/country"
                     android:paddingHorizontal="@dimen/_10sdp"
                     android:paddingEnd="@dimen/_3sdp"
+                   
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
 
@@ -157,10 +162,11 @@
                     android:background="@drawable/bg_rounded"
                     android:drawableEnd="@drawable/spinner_drop_dawn"
                     android:gravity="center_vertical"
-
                     android:hint="@string/city"
+
                     android:paddingHorizontal="@dimen/_10sdp"
                     android:paddingEnd="@dimen/_3sdp"
+                   
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
 
@@ -174,6 +180,7 @@
                     android:hint="@string/email"
                     android:inputType="textEmailAddress"
                     android:paddingHorizontal="@dimen/_10sdp"
+                   
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
 
@@ -184,14 +191,15 @@
                     android:layout_marginTop="@dimen/_20sdp"
                     android:background="@drawable/bg_rounded"
                     android:drawableEnd="@drawable/ic_location"
-                    android:drawablePadding="@dimen/_8sdp"
+                    android:drawablePadding="@dimen/_12sdp"
                     android:gravity="center_vertical"
                     android:hint="@string/location"
                     android:minHeight="@dimen/_40sdp"
-                    android:padding="@dimen/_3sdp"
                     android:paddingHorizontal="@dimen/_10sdp"
-                    android:paddingEnd="@dimen/_8sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                   
                     android:textColor="@color/black"
+
                     android:textSize="@dimen/_12sdp" />
 
 
@@ -228,7 +236,7 @@
                             android:hint="@string/phone_number"
                             android:inputType="phone"
                             android:paddingHorizontal="@dimen/_10sdp"
-                            android:text=""
+                           
                             android:textAlignment="viewStart" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -259,6 +267,7 @@
                     android:drawableEnd="@drawable/spinner_drop_dawn"
                     android:gravity="center_vertical"
                     android:hint="@string/job"
+                   
                     android:paddingHorizontal="@dimen/_10sdp"
                     android:paddingEnd="@dimen/_3sdp"
                     android:textColor="@color/black"
@@ -272,6 +281,7 @@
                     android:background="@drawable/bg_rounded"
                     android:drawableEnd="@drawable/spinner_drop_dawn"
                     android:gravity="center_vertical"
+                   
 
                     android:hint="@string/service_details"
                     android:paddingHorizontal="@dimen/_10sdp"
@@ -285,9 +295,9 @@
                     android:layout_gravity="start"
                     android:drawableEnd="@drawable/ic_close_gold"
                     android:drawablePadding="@dimen/_5sdp"
-                    android:paddingStart="@dimen/_3sdp"
+                     android:paddingStart="@dimen/_3sdp"
                     android:paddingTop="@dimen/_15sdp"
-                    android:text="تركيب سبوت لاين "
+                    android:text="@string/service_details"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_11sdp" />
 
@@ -297,6 +307,7 @@
                     android:layout_height="@dimen/_40sdp"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:background="@drawable/bg_rounded"
+                   
 
                     android:hint="@string/experience"
                     android:paddingHorizontal="@dimen/_10sdp"
@@ -310,6 +321,7 @@
                     android:layout_marginTop="@dimen/_20sdp"
                     android:background="@drawable/bg_rounded"
                     android:hint="@string/experience_years"
+                   
                     android:inputType="numberDecimal"
                     android:paddingHorizontal="@dimen/_10sdp"
                     android:paddingEnd="@dimen/_3sdp"
@@ -323,6 +335,7 @@
                     android:layout_marginTop="@dimen/_20sdp"
                     android:background="@drawable/bg_rounded"
                     android:hint="@string/et_payment_per_hour"
+                   
                     android:inputType="numberDecimal"
                     android:paddingHorizontal="@dimen/_10sdp"
                     android:paddingEnd="@dimen/_3sdp"
@@ -410,7 +423,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12ssp"
-                        app:endIconDrawable="@drawable/ic_eye_closed"
+                        app:endIconDrawable="@drawable/selector_eye"
                         app:endIconMode="password_toggle"
                         app:hintAnimationEnabled="false"
                         app:hintEnabled="false"
@@ -423,11 +436,12 @@
                             android:id="@+id/et_password"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp"
+                           
                             android:autofillHints="password"
                             android:background="@drawable/bg_rounded"
                             android:hint="@string/password"
-                            android:textAlignment="viewStart"
-                            android:inputType="textPassword" />
+                            android:inputType="textPassword"
+                            android:textAlignment="viewStart" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
@@ -451,6 +465,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:gravity="center"
+                    android:layoutDirection="locale"
                     android:orientation="horizontal">
 
                     <TextView
@@ -473,15 +488,16 @@
                         android:textStyle="bold" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
                     android:gravity="center"
+                    android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/lyt_data3"
-                    android:orientation="horizontal">
+                    app:layout_constraintTop_toBottomOf="@id/lyt_data3">
 
                     <TextView
                         android:id="@+id/terms"
@@ -511,8 +527,9 @@
                 android:id="@+id/lyt_data3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-          android:orientation="vertical"
-            android:visibility="gone"    app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/lyt_header">
 
@@ -591,12 +608,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
                 android:layout_marginHorizontal="@dimen/_60sdp"
                 android:layout_marginTop="@dimen/_30sdp"
                 android:gravity="bottom"
                 android:orientation="horizontal"
                 android:weightSum="3"
-                android:layout_gravity="bottom"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -606,10 +623,11 @@
                     android:id="@+id/view5"
                     android:layout_width="0dp"
                     android:layout_height="2dp"
-                        android:layout_marginEnd="@dimen/_2sdp"
+                    android:layout_marginEnd="@dimen/_2sdp"
                     android:layout_weight="1"
                     android:background="@color/black"
-                    android:paddingStart="@dimen/_5sdp" />
+                    android:paddingStart="@dimen/_5sdp"
+                    android:visibility="gone" />
 
                 <View
                     android:id="@+id/view4"
@@ -618,7 +636,9 @@
                     android:layout_marginEnd="@dimen/_2sdp"
                     android:layout_weight="1"
                     android:background="@color/black"
-                    android:paddingStart="@dimen/_5sdp" />
+                    android:paddingStart="@dimen/_5sdp"
+                    android:visibility="gone" />
+
                 <View
                     android:id="@+id/view1"
                     android:layout_width="0dp"
@@ -632,10 +652,9 @@
                     android:id="@+id/view2"
                     android:layout_width="0dp"
                     android:layout_height="2dp"
-                 android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
                     android:layout_weight="1"
-                    android:background="@color/grey_600"
-                  />
+                    android:background="@color/grey_400" />
 
                 <View
 
@@ -644,8 +663,7 @@
                     android:layout_height="2dp"
                     android:layout_marginEnd="@dimen/_5sdp"
                     android:layout_weight="1"
-                    android:background="@color/grey_600" />
-
+                    android:background="@color/grey_400" />
 
 
             </LinearLayout>

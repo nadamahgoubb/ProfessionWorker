@@ -3,7 +3,9 @@ package com.example.professionworker .ui.fragment.login
   import androidx.paging.PagingData
   import com.example.profession.data.dataSource.response.*
   import com.example.professionworker.base.Action
- import com.example.professionworker.domain.response.UserDataResponse
+  import com.example.professionworker.domain.response.Reviews
+  import com.example.professionworker.domain.response.ReviewsResponse
+  import com.example.professionworker.domain.response.UserDataResponse
 
 
 
@@ -24,6 +26,7 @@ sealed class AuthAction() : Action {
     data class ShowAllCities(var data: CitesResponse, val type:Int) : AuthAction()
     data class ShowAllCountry(var data: CountriesResponse, val type:Int) : AuthAction()
     data  class ShowService(val data: PagingData<ServicesItemsResponse>) : AuthAction()
+    data  class ShowReviews(val data: ReviewsResponse) : AuthAction()
     data  class ShowSubService(val data: PagingData<SubServiceItemsResponse>) : AuthAction()
 
 

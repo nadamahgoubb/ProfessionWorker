@@ -40,4 +40,8 @@
         android:id="@+id/changePassFragment"
         android:name="com.example.professionworker.ui.fragment.changePass.ChangePassFragment"
         android:label="ChangePassFragment" />
+    <fragment
+        android:id="@+id/reviewFragment"
+        android:name="com.example.professionworker.ui.fragment.reviews.ReviewFragment"
+        android:label="ReviewFragment" />
 </navigation>

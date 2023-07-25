@@ -10,7 +10,7 @@
         android:layout_height="@dimen/_80sdp"
       android:id="@+id/iv_user"
         android:src="@drawable/empty_user"
-        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_70sdp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="50dp"/>

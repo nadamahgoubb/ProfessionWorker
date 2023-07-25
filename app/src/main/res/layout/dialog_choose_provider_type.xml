@@ -9,20 +9,22 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="@dimen/_10sdp"
-        android:background="@drawable/bg_rounded"
-        android:paddingBottom="@dimen/_10sdp">
+        android:padding="@dimen/_10sdp"
+android:layout_marginHorizontal="@dimen/_10sdp"
+         android:background="@drawable/bg_rounded"
+   >
 
 
         <androidx.cardview.widget.CardView
             android:id="@+id/lyt_active_orders"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_2sdp"
-            android:layout_marginVertical="@dimen/_10sdp"
+             android:layout_marginVertical="@dimen/_4sdp"
+             android:layout_marginHorizontal="@dimen/_4sdp"
             app:cardCornerRadius="@dimen/_15sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -36,8 +38,7 @@
                     android:layout_height="wrap_content"
                     android:background="?android:selectableItemBackground"
                     android:clickable="true"
-                    android:drawablePadding="@dimen/_5sdp"
-                    android:paddingVertical="@dimen/_12sdp"
+                     android:paddingVertical="@dimen/_12sdp"
                        android:text="@string/individual"
                     android:paddingHorizontal="@dimen/_10sdp"
                     android:textColor="@color/black"

@@ -29,8 +29,7 @@ class PreviousOrderFragment( ) : BaseFragment<FragmentOrderItemBinding>(),
     private val mViewModel: OrdersViewModel by activityViewModels()
     lateinit var adapter: OrdersAdapter
     override fun onFragmentReady() {
-         onClick()
-         initAdapter()
+          initAdapter()
         mViewModel.apply {
             getOrders(Constants.PREV_ORDER)
             observe(viewState) {
@@ -43,11 +42,6 @@ class PreviousOrderFragment( ) : BaseFragment<FragmentOrderItemBinding>(),
         }
     }
 
-    private fun onClick() {
-        binding.btnGohome.setOnClickListener {
-            showActivity(MainActivity::class.java, clearAllStack = true)
-        }
-    }
 
     private fun handleViewState(action: OrdersAction) {
         when (action) {
@@ -93,6 +87,7 @@ class PreviousOrderFragment( ) : BaseFragment<FragmentOrderItemBinding>(),
 
     override fun onOrderDetailsClicked(item: OrdersItem?) {
         bundle.putString(Constants.ORDERID, Constants.PREV_ORDER)
+        mViewModel.data= item
         mViewModel.orderId= item?.orderId.toString()
         findNavController().navigate(R.id.orderInfoFragment, bundle)
     }

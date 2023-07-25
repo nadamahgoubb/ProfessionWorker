@@ -18,6 +18,7 @@ import com.example.professionworker.databinding.FragmentRegisterBinding
 import com.example.professionworker.ui.activity.MainActivity
 import com.example.professionworker.ui.adapter.CitesListener
 import com.example.professionworker.ui.adapter.NationalitiesListener
+import com.example.professionworker.ui.bottomShet.RightAndTermsBottomSheet
 import com.example.professionworker.ui.dialog.*
 import com.example.professionworker.ui.fragment.MapBottomSheet
 import com.example.professionworker.ui.fragment.login.AuthAction
@@ -170,7 +171,10 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(),
 
                                 if (isEnabled) {
                                     isEnabled = false
-                                    requireActivity().onBackPressed()
+                                    activity?.let {
+                                findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+                            }
+
                                 }
                             }
 
@@ -199,8 +203,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(),
                 else -> {
 
 
-                        requireActivity().onBackPressed()
-
+findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
                 }
 
             }        }
@@ -261,7 +264,8 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(),
 
         }
         binding.terms.setOnClickListener {
-            findNavController().navigate(R.id.rightAndTermsFragment)
+            RightAndTermsBottomSheet.newInstance( ).show(childFragmentManager, RightAndTermsBottomSheet::class.java.canonicalName)
+          //  findNavController().navigate(R.id.rightAndTermsBottomSheet)
         }
         binding.etLocation.setOnClickListener {
             checkLocation()

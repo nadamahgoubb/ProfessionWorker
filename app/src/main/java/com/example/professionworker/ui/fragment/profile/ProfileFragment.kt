@@ -35,12 +35,14 @@ import com.example.professionworker.util.ext.isNull
 import com.example.professionworker.util.ext.loadImage
 import com.example.professionworker.util.ext.roundTo
 import com.google.android.material.appbar.AppBarLayout
+import com.hbb20.CountryCodePicker
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
+class ProfileFragment : BaseFragment<FragmentProfileBinding>(),
+    CountryCodePicker.OnCountryChangeListener {
     companion object {
         val getCurrentCountryName = 1
         val getAllCountries = 2
@@ -91,8 +93,13 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     }
 
     private fun onClick() {
+
+        binding.countryCodePicker.setOnCountryChangeListener(this)
         binding.btnDelete.setOnClickListener {
             showDeletBotttomSheetFragment()
+        }
+        binding.lytRate.setOnClickListener {
+            findNavController().navigate(R.id.reviewFragment)
         }
 
         binding.ivBack.setOnClickListener {
@@ -325,6 +332,7 @@ findNavController().navigate(R.id.changePassFragment)}
             is AuthAction.ShowUserUpdated -> action.message?.let {
                 showToast(action.message)
                 stateShowData()
+                mViewModel.getProfile()
             }
 
             is AuthAction.ShowAllCities -> {
@@ -524,7 +532,7 @@ findNavController().navigate(R.id.changePassFragment)}
         this@ProfileFragment.long = data.lon//?.toDoubleOrNull()
         this@ProfileFragment.address = data.address
         binding.etLocation.setText(data.address)
-        binding.ivProfile.loadImage(data.photo, isCircular = true)
+        binding.ivProfile.loadImage(data.photo, placeHolderImage = R.drawable.empty_user, isCircular = true, errorImage = R.drawable.empty_user)
         countryCode = data.countryCode.toString()
         binding.countryCodePicker.setDefaultCountryUsingPhoneCode(
             data.countryCode.toString().toInt()
@@ -552,7 +560,13 @@ findNavController().navigate(R.id.changePassFragment)}
 
          }
         binding.etServiceDetails.setText(subServicesNames.toString())
+        try {
+            var country_code= data.countryCode?.substring(1, data.countryCode!!.length).toString()
+            country_code?.toInt()?.let { binding.countryCodePicker.setCountryForPhoneCode(it) }
 
+        }catch (e:Exception){
+
+        }
         //  mViewModel.getAllCitiesByCountryId(countryId, getCurrentCountryName)
 
     }
@@ -636,6 +650,10 @@ findNavController().navigate(R.id.changePassFragment)}
                 }
             }
         }
+
+    override fun onCountrySelected() {
+        countryCode = "+" + binding.countryCodePicker.selectedCountryCode
+    }
 
 
 }

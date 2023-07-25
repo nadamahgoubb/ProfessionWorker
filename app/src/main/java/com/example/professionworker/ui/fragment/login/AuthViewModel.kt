@@ -8,14 +8,12 @@ import com.example.professionworker.base.BaseViewModel
 import com.example.professionworker.base.PagingParams
 import com.example.professionworker.data.params.*
 import com.example.professionworker.data.repo.PrefsHelper
+import com.example.professionworker.domain.*
 import com.example.professionworker.domain.response.UserDataResponse
 import com.example.professionworker.util.NetworkConnectivity
 import com.example.professionworker.util.Resource
-import com.example.professionworker.domain.AuthUseCase
-import com.example.professionworker.domain.ProfileUseCase
 import com.example.professionworker.domain.ProfileUseCase.ProfileActions.DELETE_ACCOUNT
-import com.example.professionworker.domain.ServicesPagingUseCase
-import com.example.professionworker.domain.SubServicesPagingUseCase
+import com.example.professionworker.domain.response.ReviewsResponse
 import com.example.professionworker.util.Extension
 import com.example.professionworker.util.ext.isNull
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -31,6 +29,7 @@ class AuthViewModel
     val authUserCase: AuthUseCase,
     val useCaseProfile: ProfileUseCase,
     var usecaseService: ServicesPagingUseCase,
+    var usecasereviews: ReviewsUseCase,
     var usecaseSubService: SubServicesPagingUseCase
 ) : BaseViewModel<AuthAction>(app) {
     var name: String = ""
@@ -448,6 +447,27 @@ class AuthViewModel
                     is Resource.Success -> {
                         produce(
                             AuthAction.DeleteAccount(res.data.message)
+                        )
+
+                    }
+                }
+
+            }
+
+        }
+    }
+    fun getReviews() {
+
+        produce(AuthAction.ShowLoading(true))
+
+        viewModelScope.launch {
+            var res = usecasereviews.invoke(viewModelScope ) { res ->
+                when (res) {
+                    is Resource.Failure -> produce(AuthAction.ShowFailureMsg(res.message))
+                    is Resource.Progress -> produce(AuthAction.ShowLoading(res.loading))
+                    is Resource.Success -> {
+                        produce(
+                            AuthAction.ShowReviews(res.data.data as ReviewsResponse)
                         )
 
                     }

@@ -9,13 +9,12 @@ import com.google.gson.Gson
 object PrefsHelper {
 
 
+    private lateinit var preferences: SharedPreferences
+    private const val PREFS_NAME = "shared_prefs"
 
-        private lateinit var preferences: SharedPreferences
-        private const val PREFS_NAME = "shared_prefs"
-
-        fun init(context: Context){
-            preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        }
+    fun init(context: Context) {
+        preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+    }
 
 
     fun setLanguage(language: String) {
@@ -30,40 +29,45 @@ object PrefsHelper {
         preferences.edit().putString(Constants.TOKEN, token).apply()
 
     }
+
     fun getToken(): String {
         return preferences.getString(Constants.TOKEN, "").toString()
     }
+
     fun setloggedInBefore(logged: Boolean) {
         preferences.edit().putBoolean(Constants.LOGGED_IN, logged).apply()
 
     }
+
     fun getIsloggedInBefore(): Boolean {
-        return preferences.getBoolean(Constants.LOGGED_IN,false)
+        return preferences.getBoolean(Constants.LOGGED_IN, false)
     }
 
 
-    fun saveUserData(user: UserDataResponse?){
+    fun saveUserData(user: UserDataResponse?) {
         //set variables of 'myObject', etc.
 
         var prefsEditor = preferences.edit()
-        var gson =  Gson()
+        var gson = Gson()
         //  String
-        var  json = gson.toJson(user);
+        var json = gson.toJson(user);
         prefsEditor.putString(Constants.USER, json);
         prefsEditor.commit();
     }
-    fun getUserData(): UserDataResponse?{
+
+    fun getUserData(): UserDataResponse? {
         //set variables of 'myObject', etc.
 
         val gson = Gson()
         val json: String? = preferences.getString(Constants.USER, "")
         return gson.fromJson(json, UserDataResponse::class.java)
     }
+
     fun clear() {
         preferences.edit().clear()
         saveUserData(null)
-        saveToken(null)    }
-
+        saveToken(null)
+    }
 
 
 }

@@ -11,12 +11,13 @@
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
-        app:cardCornerRadius="@dimen/_8sdp"
+        android:layout_marginVertical="@dimen/_5sdp"
+        android:elevation="@dimen/_100sdp"
+    android:layout_marginHorizontal="@dimen/_6sdp"    app:cardCornerRadius="@dimen/_8sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeWidth="1dp">
+        app:strokeWidth="5dp">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,7 +33,7 @@
                 android:id="@+id/tv1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="طلب رقم "
+                android:text="@string/order_id_"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14ssp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -42,10 +43,8 @@
                 android:id="@+id/tv_order_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1458#"
-                android:textColor="@color/black"
-                android:textDirection="ltr"
-                android:textSize="@dimen/_14ssp"
+                 android:textColor="@color/black"
+                 android:textSize="@dimen/_14ssp"
                 app:layout_constraintStart_toEndOf="@id/tv1"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -102,8 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="14/10/2020  08:55"
-                android:textColor="@color/grey_400"
+                 android:textColor="@color/grey_400"
                 android:textSize="@dimen/_8sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

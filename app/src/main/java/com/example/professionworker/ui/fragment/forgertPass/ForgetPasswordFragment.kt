@@ -1,6 +1,7 @@
 package com.example.professionworker.ui.fragment.forgertPass
 
 
+import android.graphics.Paint
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
@@ -13,6 +14,7 @@ class ForgetPasswordFragment : BaseFragment<FragmentForgetPasswordBinding>() {
     override fun onFragmentReady() {
     //    showProgress(true)
         state1()
+        binding.btnResend.setPaintFlags(binding.btnResend.getPaintFlags() or Paint.UNDERLINE_TEXT_FLAG)
         binding.btnNext.setOnClickListener {
             state2()
         }
@@ -27,24 +29,21 @@ class ForgetPasswordFragment : BaseFragment<FragmentForgetPasswordBinding>() {
         }
         binding.ivBack.setOnClickListener {
 
-            onBack()
-        }/*  when (state) {
-            1 -> {
-                state0()
-            }
+            when(state){
+                1-> {
 
-            2 -> {
-                stateone()
-            }
 
-            else -> {
-                if (isEnabled) {
-                    isEnabled = false
-                    requireActivity().onBackPressed()
+                        activity?.let {
+                            findNavController().navigate(R.id.action_forgetPasswordFragment_to_loginFragment)
+                        }
+
                 }
-            }
+                2-> state1()
+                3->state2()
 
-        }*/
+            }
+        }
+
         onBack()
 
     }
@@ -78,16 +77,19 @@ class ForgetPasswordFragment : BaseFragment<FragmentForgetPasswordBinding>() {
       binding.lytFirst.isVisible=false
         binding.lytChangePass.isVisible=false
         binding.lytOtp.isVisible = true
-    }
+        binding.tvcounter.isVisible= true
+}
 
     private fun state1() {
       state=1
         binding.lytFirst.isVisible=true
+        binding.tvcounter.isVisible= false
         binding.lytOtp.isVisible = false
-    binding.lytPass.isVisible=false}
+    binding.lytChangePass.isVisible=false}
 
     private fun state3() {
     state=3
+        binding.tvcounter.isVisible= false
         binding.lytFirst.isVisible=false
         binding.lytOtp.isVisible = false
         binding.lytChangePass.isVisible=true    }

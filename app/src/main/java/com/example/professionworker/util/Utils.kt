@@ -54,10 +54,10 @@ object Utils {
             Constants.CASH -> {
                 return PaymentModel(paymrnt,context.resources.getString(R.string.cash), (R.drawable.money))
             }Constants.VISA -> {
-            return PaymentModel(paymrnt,context.resources.getString(R.string.cash), (R.drawable.ic_visa))
+            return PaymentModel(paymrnt,context.resources.getString(R.string.visa), (R.drawable.ic_visa))
 
             }Constants.WALLET -> {
-            return PaymentModel(paymrnt,context.resources.getString(R.string.cash), (R.drawable.ic_wallet))
+            return PaymentModel(paymrnt,context.resources.getString(R.string.wallet), (R.drawable.ic_wallet))
 
             }else -> {
                 return  null

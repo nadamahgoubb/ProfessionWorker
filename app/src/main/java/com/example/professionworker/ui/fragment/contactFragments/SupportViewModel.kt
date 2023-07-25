@@ -31,7 +31,11 @@ class SupportViewModel
             false
         }  else {
 
-            PrefsHelper.getUserData()?.let { complain(ComplainParms(it.id.toString(), title, content)) }
+            PrefsHelper.getUserData()?.let {
+                it.id?.toString()
+                    ?.let { it1 -> ComplainParms(it1, title, content) }
+                    ?.let { it2 -> complain(it2) }
+            }
             true
         }
     }

@@ -125,10 +125,11 @@ fun ImageView.loadImage(
     disablePlaceholder: Boolean = false,
     isCircular: Boolean = false,
     progressBar: ProgressBar? = null,
-    placeHolderImage: Int? = null
+    placeHolderImage: Int? = null,
+    errorImage: Int  = R.drawable.ic_alert_grey,
 ) {
     progressBar?.visible()
-    val options = RequestOptions().error(R.drawable.error).apply {
+    val options = RequestOptions().error(errorImage).apply {
         if (!disablePlaceholder)
             placeholder(placeHolderImage ?: R.drawable.image_gallery)
         if (isCircular)

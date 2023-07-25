@@ -6,7 +6,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class ReviewsResponse(
-    @SerializedName("reviews" ) var Reviews : ArrayList<Reviews> = arrayListOf()
+    @SerializedName("reviews" ) var reviews : ArrayList<Reviews> = arrayListOf()
 ) : Parcelable
 @Parcelize
 data class Reviews (

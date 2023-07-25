@@ -32,8 +32,7 @@ class CurrentOrderFragment() : BaseFragment<FragmentOrderItemBinding>(), OrdersC
     override fun onFragmentReady() {
 
         initAdapter()
-        onClick()
-        mViewModel.apply {
+         mViewModel.apply {
             getOrders(Constants.CURRENT_ORDER)
             observe(viewState) {
                 handleViewState(it)
@@ -42,12 +41,6 @@ class CurrentOrderFragment() : BaseFragment<FragmentOrderItemBinding>(), OrdersC
         binding.swiperefreshHome.setOnRefreshListener {
             mViewModel.getOrders(Constants.CURRENT_ORDER)
             if (binding.swiperefreshHome != null) binding.swiperefreshHome.isRefreshing = false
-        }
-    }
-
-    private fun onClick() {
-        binding.btnGohome.setOnClickListener {
-showActivity(MainActivity::class.java, clearAllStack = true)
         }
     }
 
@@ -94,6 +87,7 @@ showActivity(MainActivity::class.java, clearAllStack = true)
 
     override fun onOrderDetailsClicked(item: OrdersItem?) {
         bundle.putString(Constants.ORDERID, Constants.CURRENT_ORDER)
+        mViewModel.data= item
         mViewModel.orderId = item?.orderId.toString()
         findNavController().navigate(R.id.orderInfoFragment, bundle)
     }

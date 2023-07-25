@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
+       android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,14 +29,14 @@
                     android:id="@+id/rv_orders"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginHorizontal="@dimen/_4sdp"
                     android:clipToPadding="false"
                     android:orientation="vertical"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:itemCount="4"
+                    tools:itemCount="8"
                     tools:listitem="@layout/item_orders" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -67,18 +67,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/iv_unauth" />
 
-                    <Button
-                        android:id="@+id/btn_gohome"
-                        android:layout_width="match_parent"
-
-                        android:layout_height="@dimen/_38sdp"
-                        android:layout_marginHorizontal="@dimen/_20sdp"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:background="@drawable/bg_rounded"
-                        android:backgroundTint="@color/gold"
-                        android:text="@string/goto_main_screen"
-                        android:textColor="@color/white"
-                        app:layout_constraintTop_toBottomOf="@id/tv_unauth" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

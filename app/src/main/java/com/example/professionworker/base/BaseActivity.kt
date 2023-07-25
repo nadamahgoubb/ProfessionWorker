@@ -10,7 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ViewDataBinding
- import com.example.professionworker.util.LanguageUtils
+import com.example.professionworker.data.repo.PrefsHelper
+import com.example.professionworker.util.LanguageUtils
 import com.example.professionworker.util.ext.bindView
 import java.util.*
 
@@ -21,7 +22,7 @@ abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity() {
 
     override fun attachBaseContext(newBase: Context) {
         // get chosen language from shread preference
-        val locale = Locale("ar")
+        val locale = Locale(PrefsHelper.getLanguage())
         val localeUpdatedContext: ContextWrapper = LanguageUtils.updateLocale(newBase, locale)
         super.attachBaseContext(localeUpdatedContext)
 

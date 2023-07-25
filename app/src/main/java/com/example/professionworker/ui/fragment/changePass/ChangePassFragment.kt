@@ -8,6 +8,7 @@ import com.example.professionworker.base.BaseFragment
 import com.example.professionworker.data.repo.PrefsHelper
 import com.example.professionworker.databinding.FragmentChangePassBinding
 import com.example.professionworker.ui.activity.AuthActivity
+import com.example.professionworker.ui.activity.MainActivity
 import com.example.professionworker.ui.fragment.login.AuthAction
 import com.example.professionworker.ui.fragment.login.AuthViewModel
 import com.example.professionworker.util.Constants
@@ -18,16 +19,21 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 
 class ChangePassFragment : BaseFragment<FragmentChangePassBinding>() {
+    private lateinit var parent: MainActivity
     private fun setupToolbar() {
+        parent = requireActivity() as MainActivity
         binding.toolbar.tvTitle.setText(resources.getString(R.string.change_pass))
-        binding.toolbar.ivMenu.isVisible = true
+        binding.toolbar.ivMenu.isVisible = false
+        parent.showBottomNav(false)
+        parent.showSideNav(false)
+
     }
 
 
     private val mViewModel: AuthViewModel by viewModels()
 
-    //  private lateinit var parent: MainActivity
     override fun onFragmentReady() {
+        setupToolbar()
         onclick()
         mViewModel.apply {
             observe(viewState) {

@@ -1,5 +1,6 @@
 package com.example.professionworker.ui.fragment.contactFragments
 
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.example.professionworker.R
@@ -21,7 +22,24 @@ class ComplainFragment : BaseFragment<FragmentCustomerServiceBinding>() {
             observe(viewState) {
                 handleViewState(it)
             }
-        }   }
+        }
+        onBack()
+    }
+    private fun onBack() {
+        activity?.let {
+            requireActivity().onBackPressedDispatcher.addCallback(it,
+                object : OnBackPressedCallback(true) {
+                    override fun handleOnBackPressed() {
+
+                        if (isEnabled) {
+                            isEnabled = false
+                            showActivity(MainActivity::class.java, clearAllStack = true)
+                        }
+
+                    }
+                })
+        }
+    }
     private fun handleViewState(action: SupportAction) {
         when (action) {
             is SupportAction.ShowLoading -> {
@@ -59,8 +77,8 @@ showActivity(MainActivity::class.java, clearAllStack = true)
             parent.openDrawer()
         }
         binding.toolbar.ivBack.setOnClickListener {
-            activity?.onBackPressed()
-        }
+            showActivity( MainActivity::class.java, clearAllStack = true )        }
+
         binding.btnDone.setOnClickListener {
             mViewModel.validateComplain(binding.etComplainTitle.text.toString(),
                 binding.etComplainContent.text.toString())

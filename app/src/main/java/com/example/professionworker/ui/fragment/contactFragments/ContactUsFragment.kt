@@ -1,5 +1,6 @@
 package com.example.professionworker.ui.fragment.contactFragments
 
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.example.professionworker.R
@@ -27,6 +28,22 @@ class ContactUsFragment : BaseFragment<FragmentContactUsBinding>() {
             observe(viewState) {
                 handleViewState(it)
             }
+        }
+        onBack()
+    }
+    private fun onBack() {
+        activity?.let {
+            requireActivity().onBackPressedDispatcher.addCallback(it,
+                object : OnBackPressedCallback(true) {
+                    override fun handleOnBackPressed() {
+
+                        if (isEnabled) {
+                            isEnabled = false
+                            showActivity(MainActivity::class.java, clearAllStack = true)
+                        }
+
+                    }
+                })
         }
     }
 
@@ -80,9 +97,8 @@ class ContactUsFragment : BaseFragment<FragmentContactUsBinding>() {
             parent.openDrawer()
         }
         binding.toolbar.ivBack.setOnClickListener {
-            //  showActivity(MainActivity::class.java, clearAllStack = true)
+            showActivity(MainActivity::class.java, clearAllStack = true)
 
-            activity?.onBackPressed()
-        }
+         }
     }
 }
