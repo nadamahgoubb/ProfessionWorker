@@ -12,8 +12,10 @@ import com.example.professionworker.R
 import com.example.professionworker.base.BaseFragment
 import com.example.professionworker.data.params.CancelOrderParam
 import com.example.professionworker.data.params.OrderActionsParams
+import com.example.professionworker.data.repo.PrefsHelper
 import com.example.professionworker.domain.response.OrdersItem
 import com.example.professionworker.databinding.FragmentOrderInfoBinding
+import com.example.professionworker.ui.activity.AuthActivity
 import com.example.professionworker.ui.activity.MainActivity
 import com.example.professionworker.ui.adapter.CheckoutSubserviceAdapter
 import com.example.professionworker.ui.fragments.order.OrdersAction
@@ -33,10 +35,10 @@ class OrderInfoFragment : BaseFragment<FragmentOrderInfoBinding>() {
     var status = "-1"
     override fun onFragmentReady() {
 
-         setupToolbar()
+        setupToolbar()
         onClick()
         mViewModel.apply {
-             observe(viewState) {
+            observe(viewState) {
                 handleViewState(it)
             }
         }
@@ -46,15 +48,18 @@ class OrderInfoFragment : BaseFragment<FragmentOrderInfoBinding>() {
             when (it) {
                 Constants.New_ORDER -> {
                     binding.cardNewOrder.isVisible = true
-                     binding.cardCancelOrder.isVisible = true
+                    binding.cardCancelOrder.isVisible = true
                 }
+
                 Constants.CURRENT_ORDER -> {
                     binding.cardInProgress.isVisible = true
                     binding.cardCompeletOrder.isVisible = true
                 }
+
                 Constants.PREV_ORDER -> {
-                     binding.cardCompelted.isVisible = true
-                    binding.cardCompeletOrder.isVisible = true
+                    binding.cardPrice.isVisible= false
+                    binding.cardCompelted.isVisible = true
+                    binding.cardCompeletOrder.isVisible = false
                     binding.cardPersonalInfo.isVisible = false
                 }
 
@@ -64,6 +69,7 @@ class OrderInfoFragment : BaseFragment<FragmentOrderInfoBinding>() {
         }
 
     }
+
     private fun handleViewState(action: OrdersAction) {
         when (action) {
             is OrdersAction.ShowLoading -> {
@@ -74,17 +80,30 @@ class OrderInfoFragment : BaseFragment<FragmentOrderInfoBinding>() {
             }
 
 
-            is OrdersAction.ShowFailureMsg -> action.message?.let {
-                showToast(action.message)
-                showProgress(false)
+            is OrdersAction.ShowFailureMsg -> {
+                if (action.message?.contains("401") == true) {
+                    PrefsHelper.clear()
+                    var intent = Intent(requireContext(), AuthActivity::class.java)
+                    intent.putExtra(Constants.Start, Constants.login)
+                    startActivity(intent)
+                    requireActivity()?.finish()
+                } else {
+                    action.message?.let {
+                        showToast(action.message)
+                        showProgress(false)
 
+                    }
+                }
             }
 
-            is OrdersAction.ShowOrderActions ->{
+            is OrdersAction.ShowOrderActions -> {
                 showToast(action.message)
-                 binding.cardPrice.isVisible = false
+                binding.cardPrice.isVisible = false
 
-                if(action.params.action_type.equals(Constants.CANCEL)||action.params.action_type.equals(Constants.COMPELET)){
+                if (action.params.action_type.equals(Constants.CANCEL) || action.params.action_type.equals(
+                        Constants.COMPELET
+                    )
+                ) {
                     activity?.onBackPressed()
                 }
             }
@@ -99,41 +118,43 @@ class OrderInfoFragment : BaseFragment<FragmentOrderInfoBinding>() {
 
     lateinit var data: OrdersItem
     var orderId: String? = null
-    private fun showData( ) {
-       mViewModel.data?.let {
-           data =it
-           binding.lytData.isVisible = true
+    private fun showData() {
+        mViewModel.data?.let {
+            data = it
+            binding.lytData.isVisible = true
             binding.tvOrderId.setText(data.orderId)
-           this.orderId = data.orderId
-           data.paymentMethod?.let {
-               var paymentData = getPaymentMethod(it, requireContext())
-               binding.tvCash.setText(paymentData?.title)
-               binding.ivLogoPayment.setImageDrawable(
-                   resources.getDrawable(paymentData?.logo!!)
-               )
-           }
+            this.orderId = data.orderId
+            data.paymentMethod?.let {
+                var paymentData = getPaymentMethod(it, requireContext())
+                binding.tvCash.setText(paymentData?.title)
+                binding.ivLogoPayment.setImageDrawable(
+                    resources.getDrawable(paymentData?.logo!!)
+                )
+            }
 
-           binding.tvName.setText(data?.userName)
-           binding.ivUser.loadImage(data?.userPhoto , isCircular = true, placeHolderImage = R.drawable.empty_user)
-           binding.tvAddress.setText(data?.address)
-           binding.lytCall.setOnClickListener {
-               data.userPhone?.let { it -> call(it) }
-           }
-           binding.lytLocation.setOnClickListener {
-               data.lat?.let { it -> openMap(requireContext(), it, data.lon.toString()) }
-           }
-           binding.tvTime.setText(data.orderTime)
-           binding.tvDate.setText(data.orderDate)
-           // binding.tvPrice.setText(data.providerHourPrice.toString())
-           binding.tvTimeinService.setText(data.countHours.toString() + resources.getText(R.string.hour))
-           binding.tvTotalBeforetax.setText(data.total?.toString())
-           binding.tvTax.setText(data.tax?.toDoubleOrNull()?.roundTo(2).toString())
-           binding.tvTotalPrice.setText(data.finalTotal)
+            binding.tvName.setText(data?.userName)
+            binding.ivUser.loadImage(
+                data?.userPhoto, isCircular = true, placeHolderImage = R.drawable.empty_user
+            )
+            binding.tvAddress.setText(data?.address)
+            binding.lytCall.setOnClickListener {
+                data.userPhone?.let { it -> call(it) }
+            }
+            binding.lytLocation.setOnClickListener {
+                data.lat?.let { it -> openMap(requireContext(), it, data.lon.toString()) }
+            }
+            binding.tvTime.setText(data.orderTime)
+            binding.tvDate.setText(data.orderDate)
+            // binding.tvPrice.setText(data.providerHourPrice.toString())
+            binding.tvTimeinService.setText(data.countHours.toString() + resources.getText(R.string.hour))
+            binding.tvTotalBeforetax.setText(data.total?.toString())
+            binding.tvTax.setText(data.tax?.toDoubleOrNull()?.roundTo(2).toString())
+            binding.tvTotalPrice.setText(data.finalTotal)
 
-           adapter_subservice.itemsList = data.subServices
-           adapter_subservice.notifyDataSetChanged()
+            adapter_subservice.itemsList = data.subServices
+            adapter_subservice.notifyDataSetChanged()
 
-       }
+        }
 
     }
 
@@ -148,14 +169,31 @@ class OrderInfoFragment : BaseFragment<FragmentOrderInfoBinding>() {
 
 
         binding.btnReject.setOnClickListener {
-            orderId?.let { it1 -> mViewModel.showOrderAction(OrderActionsParams(it1,"underway", Constants.CANCEL)) }
+            orderId?.let { it1 ->
+                mViewModel.showOrderAction(
+                    OrderActionsParams(
+                        it1, "underway", Constants.CANCEL
+                    )
+                )
+            }
         }
         binding.btnCompelete.setOnClickListener {
-            orderId?.let { it1 -> mViewModel.showOrderAction(OrderActionsParams(it1,"previous", Constants.COMPELET)) }
+            orderId?.let { it1 ->
+                mViewModel.showOrderAction(
+                    OrderActionsParams(
+                        it1, "previous", Constants.COMPELET
+                    )
+                )
+            }
         }
-  binding.btnAccept.setOnClickListener {
-            orderId?.let { it1 -> mViewModel.showOrderAction(OrderActionsParams(it1,
-              "underway", Constants.ACCEPT)) }
+        binding.btnAccept.setOnClickListener {
+            orderId?.let { it1 ->
+                mViewModel.showOrderAction(
+                    OrderActionsParams(
+                        it1, "underway", Constants.ACCEPT
+                    )
+                )
+            }
         }
 
 

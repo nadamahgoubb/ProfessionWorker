@@ -45,8 +45,9 @@ abstract class BaseUseCase<RequestType : BaseResponse, params : Any> :
                     )
                     is NetworkResponse.ServerError -> {
 
+                     if   (it.code == 401)  showFailureMessage(onResult, "401"+it.body?.Error)
 
-                        showFailureMessage(onResult, it.body?.Error)
+                     else    showFailureMessage(onResult, it.body?.Error)
 
                     }
                  else -> {

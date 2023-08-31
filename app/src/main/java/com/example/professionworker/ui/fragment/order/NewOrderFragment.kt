@@ -12,8 +12,10 @@ import com.example.profession.ui.adapter.OrdersClickListener
 import com.example.professionworker.R
 
 import com.example.professionworker.base.BaseFragment
+import com.example.professionworker.data.repo.PrefsHelper
 import com.example.professionworker.domain.response.OrdersItem
 import com.example.professionworker.databinding.FragmentOrderItemBinding
+import com.example.professionworker.ui.activity.AuthActivity
 import com.example.professionworker.ui.activity.MainActivity
 import com.example.professionworker.ui.fragments.order.OrdersAction
 import com.example.professionworker.util.Constants
@@ -66,9 +68,20 @@ class NewOrderFragment( ) : BaseFragment<FragmentOrderItemBinding>(),
                 }
             }
                 is OrdersAction.ShowFailureMsg ->
-                action.message?.let {
-                    showToast(action.message)
-                    showProgress(false)
+                {
+                    if (action.message?.contains("401") == true) {
+                        PrefsHelper.clear()
+                        var intent = Intent(requireContext(), AuthActivity::class.java)
+                        intent.putExtra(Constants.Start, Constants.login)
+                        startActivity(intent)
+                        requireActivity()?.finish()
+                    } else {
+                        action.message?.let {
+                            showToast(action.message)
+                            showProgress(false)
+
+                        }
+                    }
                 }
 
 
