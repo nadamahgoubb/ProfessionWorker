@@ -426,25 +426,24 @@
                             android:drawablePadding="@dimen/_5sdp"
                             android:paddingHorizontal="@dimen/_8sdp"
                             android:paddingTop="@dimen/_15sdp"
-                            android:text="تركيب سبوت لاين "
-                            android:textColor="@color/black"
+                             android:textColor="@color/black"
                             android:textSize="@dimen/_11sdp" />
 
-                        <TextView
+                        <EditText
                             android:id="@+id/et_ex_experience"
 
 
                             style="@style/text_view"
                             android:hint="@string/experience" />
 
-                        <TextView
+                        <EditText
                             android:id="@+id/et_experience_years"
 
 
                             style="@style/text_view"
                             android:hint="@string/experience_years" />
 
-                        <TextView
+                        <EditText
                             android:id="@+id/et_payment_per_hour"
 
 

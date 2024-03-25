@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/walkThrougthFragment"
-        android:name="com.example.professionworker.ui.fragments.walkThrough.WalkThrougthFragment"
+        android:name="com.dot_jo.professionworker.ui.fragments.walkThrough.WalkThrougthFragment"
         android:label="WalkThrougthFragment">
         <action
             android:id="@+id/action_walkThrougthFragment_to_loginFragment"
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.professionworker.ui.fragment.SplashFragment"
+        android:name="com.dot_jo.professionworker.ui.fragment.SplashFragment"
         android:label="SplashFragment">
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.professionworker.ui.fragment.register.RegisterFragment"
+        android:name="com.dot_jo.professionworker.ui.fragment.register.RegisterFragment"
         android:label="RegisterFragment" >
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
@@ -45,12 +45,12 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.professionworker.ui.fragment.login.LoginFragment"
+        android:name="com.dot_jo.professionworker.ui.fragment.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/rightAndTermsBottomSheet"
-        android:name="com.example.professionworker.ui.bottomShet.RightAndTermsBottomSheet"
+        android:name="com.dot_jo.professionworker.ui.bottomShet.RightAndTermsBottomSheet"
         android:label="RightAndTermsFragment" >
         <action
             android:id="@+id/action_rightAndTermsFragment2_to_registerFragment"
@@ -61,7 +61,7 @@
      </fragment>
     <fragment
         android:id="@+id/forgetPasswordFragment"
-        android:name="com.example.professionworker.ui.fragment.forgertPass.ForgetPasswordFragment"
+        android:name="com.dot_jo.professionworker.ui.fragment.forgertPass.ForgetPasswordFragment"
         android:label="ForgetPasswordFragment" >
         <action
             android:id="@+id/action_forgetPasswordFragment_to_loginFragment"
@@ -71,8 +71,5 @@
             app:popUpToInclusive="true" />
     </fragment>
 
-    <!-- <fragment
-         android:id="@+id/subscribationFragment"
-         android:name="com.example.professionworker.ui.fragment.register.SubscribationFragment"
-         android:label="SubscribationFragment" />-->
+
 </navigation>

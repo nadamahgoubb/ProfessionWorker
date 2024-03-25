@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.example.professionworker",
+  "applicationId": "com.dot_jo.professionworker",
   "variantName": "release",
   "elements": [
     {

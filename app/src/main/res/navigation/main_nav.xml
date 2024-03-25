@@ -6,42 +6,42 @@
 
     <fragment
         android:id="@+id/orderFragment"
-        android:name="com.example.professionworker.ui.fragment.order.OrderFragment"
+        android:name="com.dot_jo.professionworker.ui.fragment.order.OrderFragment"
         android:label="OrderFragment" />
     <fragment
         android:id="@+id/orderInfoFragment"
-        android:name="com.example.professionworker.ui.fragment.order.OrderInfoFragment"
+        android:name="com.dot_jo.professionworker.ui.fragment.order.OrderInfoFragment"
         android:label="OrderInfoFragment" />
     <fragment
         android:id="@+id/notifactionFragment"
-        android:name="com.example.professionworker.ui.fragment.notifaction.NotifactionFragment"
+        android:name="com.dot_jo.professionworker.ui.fragment.notifaction.NotifactionFragment"
         android:label="NotifactionFragment" />
     <fragment
         android:id="@+id/customerServiceFragment"
-        android:name="com.example.professionworker.ui.fragment.contactFragments.ComplainFragment"
+        android:name="com.dot_jo.professionworker.ui.fragment.contactFragments.ComplainFragment"
         android:label="ComplainsFragment" />
     <fragment
         android:id="@+id/contactUsFragment"
-        android:name="com.example.professionworker.ui.fragment.contactFragments.ContactUsFragment"
+        android:name="com.dot_jo.professionworker.ui.fragment.contactFragments.ContactUsFragment"
         android:label="ContactUsFragment" />
     <fragment
         android:id="@+id/rightAndTermsFragment"
-        android:name="com.example.professionworker.ui.fragment.contactFragments.RightAndTermsFragment"
+        android:name="com.dot_jo.professionworker.ui.fragment.contactFragments.RightAndTermsFragment"
         android:label="RightAndTermsFragment" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.professionworker.ui.fragment.setting.SettingFragment"
+        android:name="com.dot_jo.professionworker.ui.fragment.setting.SettingFragment"
         android:label="SettingFragment" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.professionworker.ui.fragment.profile.ProfileFragment"
+        android:name="com.dot_jo.professionworker.ui.fragment.profile.ProfileFragment"
         android:label="ProfileFragment" />
     <fragment
         android:id="@+id/changePassFragment"
-        android:name="com.example.professionworker.ui.fragment.changePass.ChangePassFragment"
+        android:name="com.dot_jo.professionworker.ui.fragment.changePass.ChangePassFragment"
         android:label="ChangePassFragment" />
     <fragment
         android:id="@+id/reviewFragment"
-        android:name="com.example.professionworker.ui.fragment.reviews.ReviewFragment"
+        android:name="com.dot_jo.professionworker.ui.fragment.reviews.ReviewFragment"
         android:label="ReviewFragment" />
 </navigation>
