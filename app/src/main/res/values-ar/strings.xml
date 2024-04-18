@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">مهن</string>
+    <string name="app_name">Provider</string>
     <string name="ok">Ok</string>
     <string name="error">Error</string>
     <string name="yes">Yes</string>
     <string name="no">لا</string>
-    <string name="location_is_off">location_is_off</string>
-    <string name="location_off_body_message">location_off_body_message</string>
+    <string name="location_is_off">GPS Loaction off</string>
+    <string name="location_off_body_message">Turn on your location</string>
      <string name="next">التالى</string>
     <string name="skip">تخطى</string>
     <string name="services">خدمات متنوعه</string>
@@ -13,7 +13,7 @@
     <string name="you_can_have_aprovider">يمكنك الحصول على مقدم الخدمة \n   الأنسب لك بكل سهوله</string>
     <string name="alot_of_workers_are_available">العديد من مقدمى الخدمات بخبرات عالية \n   الان بين يديك</string>
     <string name="start">ابدأ</string>
-    <string name="password">كلمه مرور</string>
+    <string name="password">كلمة مرور</string>
     <string name="don_t_have_account"> ليس لديك حساب؟</string>
     <string name="_have_account"> لديك حساب؟</string>
     <string name="signin">تسجيل الدخول</string>

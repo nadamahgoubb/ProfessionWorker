@@ -135,8 +135,8 @@ By signingup you aggreed to  <font color=\'#dd9c40\'>Terms &Conditions</font>  ]
 
 
     <string name="empty_address">Please Enter Your Address</string>
-    <string name="location_is_off">location_is_off</string>
-    <string name="location_off_body_message">location_off_body_message</string>
+    <string name="location_is_off">GPS Loaction off</string>
+    <string name="location_off_body_message">Turn on your location</string>
     <string name="not_all_permissions_accepted">Not All Permission Granted</string>
     <string name="reject">Reject</string>
     <string name="accept">Accept</string>

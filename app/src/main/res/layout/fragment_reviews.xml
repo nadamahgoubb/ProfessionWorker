@@ -61,7 +61,7 @@
                 </com.google.android.material.appbar.CollapsingToolbarLayout>
             </com.google.android.material.appbar.AppBarLayout>
 
-            <com.dot_jo.professionworker.base.OnlyVerticalSwipeRefreshLayout
+            <com.horizon.professionworker.base.OnlyVerticalSwipeRefreshLayout
 
                 android:id="@+id/swiperefresh_home"
                 android:layout_width="match_parent"
@@ -146,7 +146,7 @@ android:id="@+id/btn_go_providers"
                     </RelativeLayout>
 
                 </androidx.core.widget.NestedScrollView>
-            </com.dot_jo.professionworker.base.OnlyVerticalSwipeRefreshLayout>
+            </com.horizon.professionworker.base.OnlyVerticalSwipeRefreshLayout>
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

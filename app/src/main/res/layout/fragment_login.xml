@@ -48,33 +48,76 @@
                     />
 
 
-                <EditText
-                    android:id="@+id/et_user_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:background="@drawable/bg_rounded"
-                    android:hint="@string/user_name"
-                    android:text="01118148052"
-                    android:paddingStart="@dimen/_12sdp"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="6">
+
+
+                    <com.hbb20.CountryCodePicker
+                        android:id="@+id/country_code_picker"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1.5"
+                        android:background="@drawable/bg_rounded_grey"
+                        android:clickable="true"
+                        android:gravity="center"
+                        app:ccp_defaultNameCode="SA"
+                        app:ccp_showFlag="true"
+                        app:ccp_showNameCode="false"
+                        app:ccp_showPhoneCode="true"
+                        app:ccp_textSize="@dimen/_10sdp" />
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_weight="4.5"
+                        android:gravity="center"
+                        android:hint=""
+                        app:hintAnimationEnabled="false"
+                        app:hintEnabled="false"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_rounded"
+                            android:hint="@string/phone_number"
+                            android:inputType="phone"
+                            android:paddingHorizontal="@dimen/_6sdp"
+                            android:text=""
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/grey_800" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:minHeight="@dimen/_43sdp">
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/lyt_pass"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="start"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12ssp"
+                        android:layout_height="match_parent"
+
                         app:endIconDrawable="@drawable/selector_eye"
                         app:endIconMode="password_toggle"
                         app:hintAnimationEnabled="false"
@@ -86,15 +129,16 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_password"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_height="match_parent"
                             android:autofillHints="password"
                             android:background="@drawable/bg_rounded"
-                        android:text="123456"
-                            android:gravity="start"
+                            android:gravity="start|center_vertical"
                             android:hint="@string/password"
                             android:inputType="textPassword"
-                            android:paddingStart="@dimen/_12sdp"
-                            android:textAlignment="viewStart" />
+                            android:padding="@dimen/_8sdp"
+                             android:textAlignment="viewStart"
+                            android:textColorHint="@color/gray_800"
+                            android:textSize="@dimen/_12sdp" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
