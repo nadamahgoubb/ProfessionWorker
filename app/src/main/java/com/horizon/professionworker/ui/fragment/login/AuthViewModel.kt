@@ -225,7 +225,7 @@ class AuthViewModel
     }
 
 
-    fun isValidParams(countryCode: String?,phone: String?, pass: String?): Boolean {
+    fun isValidParams(countryCode: String,phone: String?, pass: String?): Boolean {
 
         return if (phone.isNullOrBlank()) {
             produce(AuthAction.ShowFailureMsg(getString(R.string.please_enter_your_phone)))

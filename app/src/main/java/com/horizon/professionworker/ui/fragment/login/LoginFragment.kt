@@ -1,6 +1,7 @@
 package com.horizon.professionworker.ui.fragment.login
 
 import android.graphics.Paint
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.hbb20.CountryCodePicker
@@ -53,6 +54,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(),
     }
 
     private fun onClick() {
+        binding.lytHeader.ivBack.isVisible=false
         binding.countryCodePicker.setOnCountryChangeListener (this)
         binding.tvForgetPass.setPaintFlags( binding.tvForgetPass.getPaintFlags() or Paint.UNDERLINE_TEXT_FLAG)
         binding.tvCreate.setPaintFlags( binding.tvCreate.getPaintFlags() or Paint.UNDERLINE_TEXT_FLAG)
